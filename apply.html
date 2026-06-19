@@ -187,10 +187,11 @@
   document.getElementById('btn-submit').addEventListener('click', async function() {
     var name = document.getElementById('inp-name').value.trim();
     var phone = document.getElementById('inp-phone').value.trim();
+    var source = new URLSearchParams(window.location.search).get('source') || undefined;
     fetch('https://recovery-log-production.up.railway.app/api/apply-submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, phone: phone, program: '1to1' })
+      body: JSON.stringify({ name: name, phone: phone, program: '1to1', source: source })
     }).catch(function() {});
     document.getElementById('form-screen').classList.add('hidden');
     document.getElementById('done-screen').classList.remove('hidden');
