@@ -1279,20 +1279,45 @@
   fetch('https://recovery-log-production.up.railway.app/api/enrollment-mode?program=1to1')
     .then(function(r) { return r.json(); })
     .then(function(d) {
-      if (d.mode === 'waitlist') {
-        var n = d.nextCohort || 7;
-        var btn = document.getElementById('mainApplyBtn');
-        if (btn) { btn.href = './apply-waitlist.html'; }
-        var txt = document.getElementById('mainApplyBtnText');
-        if (txt) { txt.textContent = n + '기 대기 신청하기'; }
-        // 상단 top-cta도 업데이트
-        document.querySelectorAll('a[href="#apply"]').forEach(function(a) {
-          a.href = './apply-waitlist.html';
-          a.target = '_blank';
-          var span = a.querySelector('span:not(.dot)');
-          if (span) span.textContent = n + '기 대기 신청하기';
-        });
-      }
+      var n = d.nextCohort || 7;
+      var isWaitlist = d.mode === 'waitlist';
+      var label = isWaitlist ? (n + '기 대기 신청하기') : (n + '기 신청하기');
+      var applyHref = isWaitlist ? './apply-waitlist.html' : './apply.html';
+      var statusText = isWaitlist ? (n + '기 대기 모집 중') : (n + '기 모집 중');
+
+      // 메인 버튼
+      var btn = document.getElementById('mainApplyBtn');
+      if (btn) { btn.href = applyHref; }
+      var txt = document.getElementById('mainApplyBtnText');
+      if (txt) { txt.textContent = label; }
+
+      // 상단 top-cta
+      document.querySelectorAll('.top-cta').forEach(function(a) {
+        a.href = applyHref;
+        if (isWaitlist) { a.target = '_blank'; }
+        var span = a.querySelector('span:not(.dot)');
+        if (span) span.textContent = label;
+      });
+
+      // 히어로 버튼
+      document.querySelectorAll('.btn-primary[href="#apply"], .btn-primary[href="./apply-waitlist.html"], .btn-primary[href="./apply.html"]').forEach(function(a) {
+        a.href = applyHref;
+        if (isWaitlist) { a.target = '_blank'; }
+        var textNode = Array.from(a.childNodes).find(function(n) { return n.nodeType === 3; });
+        if (textNode) { textNode.textContent = label + ' '; }
+      });
+
+      // 상태 텍스트 (모집 중 표시)
+      document.querySelectorAll('.meta-line .dot').forEach(function(dot) {
+        var span = dot.parentElement;
+        if (span) span.innerHTML = '<span class="dot"></span> ' + statusText;
+      });
+      document.querySelectorAll('.fc-tag').forEach(function(el) {
+        el.innerHTML = '<span style="width:6px;height:6px;border-radius:999px;background:#5ad17b;display:inline-block;"></span> ' + statusText;
+      });
+      document.querySelectorAll('.eyebrow b').forEach(function(el) {
+        el.textContent = statusText;
+      });
     })
     .catch(function() {});
 </script>
