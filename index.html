@@ -326,6 +326,8 @@
   .compo-item strong { font-weight: 700; }
   .price-box { border-top: 1px dashed var(--line); padding-top: 26px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
   .pm-price-notice { display: inline-block; font-size: 13px; font-weight: 700; color: var(--danger); background: rgba(193,85,106,.08); border: 1px solid rgba(193,85,106,.25); border-radius: 999px; padding: 6px 14px; margin-bottom: 12px; }
+  .deadline-timer { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 800; color: var(--danger); background: rgba(193,85,106,.08); border: 1px solid rgba(193,85,106,.25); border-radius: 999px; padding: 8px 16px; margin: 14px 0 6px; }
+  .deadline-timer span { font-variant-numeric: tabular-nums; }
   .price-main .pm-cycle { font-size: 14px; color: var(--ink-3); }
   .price-main .pm-num { font-size: clamp(40px, 5vw, 56px); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin: 4px 0; }
   .price-main .pm-num small { font-size: 22px; }
@@ -714,6 +716,9 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow reveal"><span>1:1 맞춤 프로그램</span> · <b id="eyebrowStatus">7기 대기 모집 중</b></div>
+    <div class="deadline-timer reveal" id="deadlineTimer" style="display:none">
+      마감까지 <span id="deadlineTimerVal">-</span>
+    </div>
     <h1 class="h-display reveal">
       반복되는 치료에서<br>
       <span class="hl">“진짜 해결”</span>은<br>
@@ -1311,6 +1316,27 @@
           : '<li>위 버튼으로 <strong>신청서를 제출</strong>합니다.</li>'
             + '<li>화면에 뜨는 계좌로 <strong>입금</strong> 후, <strong>허리디스크 회복연구소 카카오톡 채널</strong>을 추가합니다.</li>'
             + '<li>채팅으로 <strong>”성함”</strong>을 보내주시면 참여가 확정됩니다.</li>';
+      }
+
+      // 마감 타이머 — 모집중(open)이고 마감일이 설정된 경우에만 표시. 마감일 자정(KST)이 실제 마감 시점.
+      if (!isWaitlist && d.deadline) {
+        var deadlineMs = new Date(d.deadline + 'T00:00:00+09:00').getTime();
+        var timerEl = document.getElementById('deadlineTimer');
+        var timerVal = document.getElementById('deadlineTimerVal');
+        var timerInterval;
+        var pad = function(v) { return String(v).padStart(2, '0'); };
+        var tick = function() {
+          var diff = deadlineMs - Date.now();
+          if (diff <= 0) { timerEl.style.display = 'none'; clearInterval(timerInterval); return; }
+          var dd = Math.floor(diff / 86400000);
+          var hh = Math.floor((diff % 86400000) / 3600000);
+          var mm = Math.floor((diff % 3600000) / 60000);
+          var ss = Math.floor((diff % 60000) / 1000);
+          timerVal.textContent = dd + '일 ' + pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+        };
+        tick();
+        timerInterval = setInterval(tick, 1000);
+        timerEl.style.display = 'inline-flex';
       }
     })
     .catch(function() {});
