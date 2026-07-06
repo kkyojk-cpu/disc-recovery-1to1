@@ -75,7 +75,7 @@
 <div class="card">
   <div class="card-header">
     <div class="card-eyebrow">회복 나침반 · 1:1 프로그램</div>
-    <div class="card-title">6기 신청</div>
+    <div class="card-title" id="app-title">6기 신청</div>
     <div class="card-sub">병원 전 단계, 1:1 정밀 관리 프로그램</div>
   </div>
 
@@ -166,7 +166,12 @@
   // 모집 모드 확인 — 마감이면 대기 페이지로 이동
   fetch('https://recovery-log-production.up.railway.app/api/enrollment-mode?program=1to1')
     .then(function(r) { return r.json(); })
-    .then(function(d) { if (d.mode === 'waitlist') location.replace('./apply-waitlist.html'); })
+    .then(function(d) {
+      if (d.mode === 'waitlist') { location.replace('./apply-waitlist.html'); return; }
+      var n = d.nextCohort || 7;
+      document.getElementById('app-title').textContent = n + '기 신청';
+      document.title = '회복 나침반 1:1 프로그램 ' + n + '기 신청';
+    })
     .catch(function() {});
 
   document.getElementById('privacy-cb').addEventListener('change', function() {

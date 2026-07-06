@@ -1247,7 +1247,7 @@
 
       <div class="apply-steps">
         <div class="as-h">신청 방법</div>
-        <ol>
+        <ol id="applySteps">
           <li>위 버튼으로 <strong>신청서를 제출</strong>합니다.</li>
           <li>제출 후 화면에 뜨는 <strong>허리디스크 회복연구소 카카오톡 채널</strong>을 추가합니다.</li>
           <li>채팅으로 <strong>”7기대기(성함)”</strong>을 보내주시면 다음 안내를 진행합니다.</li>
@@ -1299,6 +1299,19 @@
       setText('fcTagText', statusText);
       setText('eyebrowStatus', statusText);
       setText('metaLineStatus', statusText);
+
+      // "신청 방법" 안내는 대기 신청(카톡에 기수 대기 문구 보내기)과 실제 결제 신청(입금 후 성함만 보내기)의
+      // 절차가 완전히 다르므로 모드에 맞춰 통째로 바꿔준다.
+      var stepsEl = document.getElementById('applySteps');
+      if (stepsEl) {
+        stepsEl.innerHTML = isWaitlist
+          ? '<li>위 버튼으로 <strong>신청서를 제출</strong>합니다.</li>'
+            + '<li>제출 후 화면에 뜨는 <strong>허리디스크 회복연구소 카카오톡 채널</strong>을 추가합니다.</li>'
+            + '<li>채팅으로 <strong>”' + n + '기대기(성함)”</strong>을 보내주시면 다음 안내를 진행합니다.</li>'
+          : '<li>위 버튼으로 <strong>신청서를 제출</strong>합니다.</li>'
+            + '<li>화면에 뜨는 계좌로 <strong>입금</strong> 후, <strong>허리디스크 회복연구소 카카오톡 채널</strong>을 추가합니다.</li>'
+            + '<li>채팅으로 <strong>”성함”</strong>을 보내주시면 참여가 확정됩니다.</li>';
+      }
     })
     .catch(function() {});
 </script>
