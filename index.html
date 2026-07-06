@@ -1246,6 +1246,9 @@
   <div class="wrap">
     <div class="reveal">
       <span class="fc-tag"><span style="width:6px;height:6px;border-radius:999px;background:#5ad17b;display:inline-block;"></span> <span id="fcTagText">7기 대기 모집 중</span></span>
+      <div class="deadline-timer" id="deadlineTimer2" style="display:none">
+        마감까지 <span id="deadlineTimerVal2">-</span>
+      </div>
       <h2>반복되는 통증 대신,<br>스스로 회복하는 길로.</h2>
       <p class="final-plead">
         미팅을 하면서 느끼지만, 정말 간절하신 분들이 많습니다.<br>
@@ -1328,24 +1331,30 @@
       }
 
       // 마감 타이머 — 모집중(open)이고 마감일이 설정된 경우에만 표시. 마감일 자정(KST)이 실제 마감 시점.
+      // 페이지 여러 군데(히어로/최하단)에 있을 수 있어 id 쌍 목록을 돌며 전부 갱신한다.
       if (!isWaitlist && d.deadline) {
         var deadlineMs = new Date(d.deadline + 'T00:00:00+09:00').getTime();
-        var timerEl = document.getElementById('deadlineTimer');
-        var timerVal = document.getElementById('deadlineTimerVal');
+        var timerPairs = [['deadlineTimer', 'deadlineTimerVal'], ['deadlineTimer2', 'deadlineTimerVal2']];
         var timerInterval;
         var pad = function(v) { return String(v).padStart(2, '0'); };
         var tick = function() {
           var diff = deadlineMs - Date.now();
-          if (diff <= 0) { timerEl.style.display = 'none'; clearInterval(timerInterval); return; }
-          var dd = Math.floor(diff / 86400000);
-          var hh = Math.floor((diff % 86400000) / 3600000);
-          var mm = Math.floor((diff % 3600000) / 60000);
-          var ss = Math.floor((diff % 60000) / 1000);
-          timerVal.textContent = dd + '일 ' + pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+          timerPairs.forEach(function(pair) {
+            var box = document.getElementById(pair[0]);
+            var val = document.getElementById(pair[1]);
+            if (!box || !val) return;
+            if (diff <= 0) { box.style.display = 'none'; return; }
+            var dd = Math.floor(diff / 86400000);
+            var hh = Math.floor((diff % 86400000) / 3600000);
+            var mm = Math.floor((diff % 3600000) / 60000);
+            var ss = Math.floor((diff % 60000) / 1000);
+            val.textContent = dd + '일 ' + pad(hh) + ':' + pad(mm) + ':' + pad(ss);
+            box.style.display = 'inline-flex';
+          });
+          if (diff <= 0) clearInterval(timerInterval);
         };
         tick();
         timerInterval = setInterval(tick, 1000);
-        timerEl.style.display = 'inline-flex';
       }
     })
     .catch(function() {});
