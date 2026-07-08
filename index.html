@@ -538,6 +538,33 @@
     .ba-before-card, .ba-after-card { padding: 28px 24px; }
   }
 
+  /* ===== Impact cards (통증 낙차 카드) ===== */
+  .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  .impact-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 20px;
+    padding: 28px 22px; text-align: center; box-shadow: var(--shadow-sm);
+  }
+  .impact-tag { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; margin-bottom: 14px; }
+  .impact-nums { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .impact-num { font-size: 40px; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+  .impact-num.before { color: var(--accent); }
+  .impact-num.after { color: var(--green); }
+  .impact-arrow { font-size: 18px; color: var(--ink-3); }
+  .impact-cap { font-size: 11.5px; color: var(--ink-3); margin-top: 6px; }
+  .impact-headline { font-size: 14.5px; font-weight: 800; color: var(--ink); margin-top: 16px; line-height: 1.5; }
+  .impact-quote {
+    margin: 14px 0 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.65;
+    border-left: 2px solid var(--green); padding-left: 12px; text-align: left; font-style: normal;
+  }
+  .impact-proof { margin-top: 16px; border-radius: 10px; background: var(--bg); border: 1px dashed var(--line); padding: 10px; }
+  .impact-proof-cap { font-size: 10px; color: var(--ink-3); margin-bottom: 6px; text-align: left; }
+  .impact-proof-graph { height: 44px; display: flex; align-items: flex-end; gap: 2px; }
+  .impact-proof-graph i { flex: 1; background: var(--green); opacity: .5; border-radius: 2px 2px 0 0; }
+  .impact-proof-graph i:last-child { opacity: 1; }
+
+  @media (max-width: 900px) { .impact-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .impact-grid { grid-template-columns: 1fr; } }
+
   /* ===== 12주 커리큘럼 ===== */
   .curr12-wrap { display: grid; gap: 16px; }
   .curr12-phase { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); }
@@ -860,14 +887,79 @@
       <p class="sec-sub">편집하지 않은 실제 설문 후기와, 참여자가 스스로 남긴 일일 기록입니다.</p>
     </div>
 
-    <div class="hl-quote reveal" style="margin-bottom:52px;">
-      <p>아프면서 <strong>고립되고 우울한 생각</strong>도 많이 드는데, 선생님이랑 같이 시작하는 그 기간에 <strong>컨디션이 좋아지더라</strong>구요. 나만의 외로운 싸움이 아니구나 싶었어요.</p>
+    <!-- 압도적 케이스 4개 -->
+    <div class="impact-grid reveal">
+
+      <div class="impact-card">
+        <div class="impact-tag">1:1 나침반 · 50일 기록</div>
+        <div class="impact-nums">
+          <span class="impact-num before">6</span>
+          <span class="impact-arrow">→</span>
+          <span class="impact-num after">1</span>
+        </div>
+        <p class="impact-cap">통증점수 · 10점 만점</p>
+        <p class="impact-headline">통증 6 → 1, 그리고<br>50일째 그대로입니다</p>
+        <p class="impact-quote">"한 달 전엔 앉아 있지도 못했던 미용실에서<br>앉아 있으며 마무리했다.<br>주위에서 많이 좋아졌구나 해주셨다"</p>
+        <div class="impact-proof">
+          <div class="impact-proof-cap">50일간 통증점수 추이</div>
+          <div class="impact-proof-graph"><i style="height:75%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:45%"></i><i style="height:30%"></i><i style="height:18%"></i><i style="height:15%"></i><i style="height:15%"></i></div>
+        </div>
+      </div>
+
+      <div class="impact-card">
+        <div class="impact-tag">1:1 나침반 · 23일 기록</div>
+        <div class="impact-nums">
+          <span class="impact-num before">9</span>
+          <span class="impact-arrow">→</span>
+          <span class="impact-num after">3</span>
+        </div>
+        <p class="impact-cap">통증점수 · 10점 만점</p>
+        <p class="impact-headline">가장 심했던 통증 9,<br>3주 만에 3으로 내려왔습니다</p>
+        <p class="impact-quote">"오늘 하루 잠깐 발바닥도<br>안 아픈 적이 있었음, 처음이라 놀랐다"</p>
+        <div class="impact-proof">
+          <div class="impact-proof-cap">23일간 통증점수 추이</div>
+          <div class="impact-proof-graph"><i style="height:55%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:40%"></i><i style="height:33%"></i></div>
+        </div>
+      </div>
+
+      <div class="impact-card">
+        <div class="impact-tag">1:1 나침반 · 13일 기록</div>
+        <div class="impact-nums">
+          <span class="impact-num before">6</span>
+          <span class="impact-arrow">→</span>
+          <span class="impact-num after">2</span>
+        </div>
+        <p class="impact-cap">통증점수 · 10점 만점</p>
+        <p class="impact-headline">가장 심했던 통증 6,<br>13일 만에 2로 내려왔습니다</p>
+        <p class="impact-quote">"느린 속도지만 이렇게 3분을<br>연속해서 뛸 수 있음에 놀랐다"</p>
+        <div class="impact-proof">
+          <div class="impact-proof-cap">13일간 통증점수 추이</div>
+          <div class="impact-proof-graph"><i style="height:100%"></i><i style="height:83%"></i><i style="height:70%"></i><i style="height:70%"></i><i style="height:83%"></i><i style="height:100%"></i><i style="height:33%"></i></div>
+        </div>
+      </div>
+
+      <div class="impact-card">
+        <div class="impact-tag">1:1 나침반 · 6주 기록</div>
+        <div class="impact-nums">
+          <span class="impact-num before">6</span>
+          <span class="impact-arrow">→</span>
+          <span class="impact-num after">3</span>
+        </div>
+        <p class="impact-cap">통증점수 · 10점 만점</p>
+        <p class="impact-headline">가장 심했던 통증 6,<br>6주 만에 3으로 내려왔습니다</p>
+        <p class="impact-quote">"팔걸이를 잡지 않으면 일어나는 방법이<br>생각 안 나서 현타왔는데<br>→ 이젠 허리 하나도 안 아파요"</p>
+        <div class="impact-proof">
+          <div class="impact-proof-cap">4/4~5/19 통증점수 추이</div>
+          <div class="impact-proof-graph"><i style="height:30%"></i><i style="height:100%"></i><i style="height:20%"></i><i style="height:40%"></i><i style="height:50%"></i><i style="height:40%"></i><i style="height:30%"></i></div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- 실제 기록 비포애프터 -->
-    <div class="proof-subhead reveal">
-      <span class="ps-tag">실제 스스로 기록한 내용</span>
-      <h3>주차가 지날수록, 통증이 옅어집니다</h3>
+    <!-- 더 많은 실제 기록 -->
+    <div class="proof-subhead reveal" style="margin-top:64px;">
+      <span class="ps-tag">더 많은 실제 기록</span>
+      <h3>이 외에도, 매일 쌓인 기록들이 있습니다</h3>
     </div>
 
     <!-- 기존 이미지 1장 -->
@@ -878,37 +970,6 @@
 
     <div class="img-frame reveal" style="margin-bottom:20px;">
       <img src="./img/img12.png" alt="참여자 기록 추가">
-    </div>
-
-    <!-- 강가을 비포애프터 -->
-    <div class="ba-block reveal">
-      <div class="ba-period-label">4/4 → 5/19 · 약 6주간의 변화</div>
-      <div class="ba-split">
-        <div class="ba-before-card">
-          <div class="ba-before-tag">BEFORE</div>
-          <div class="ba-before-data">슬조+걷기 10분 · VAS 6</div>
-          <p class="ba-before-quote">
-            "팔걸이 있는 의자에서 일어날 때,<br>
-            다리 힘으로 일어나지 못하고<br>
-            팔걸이를 잡지 않으면<br>
-            일어나는 방법이 생각이 안나서<br>
-            <strong>현타왔음</strong>"
-          </p>
-        </div>
-        <div class="ba-arrow-col">
-          <div class="ba-arrow-line"></div>
-          <div class="ba-arrow-icon">→</div>
-          <div class="ba-arrow-line"></div>
-        </div>
-        <div class="ba-after-card">
-          <div class="ba-after-tag">AFTER</div>
-          <div class="ba-after-data">슬조+걷기 15분 · VAS 3</div>
-          <p class="ba-after-quote">
-            "아침에 일어날 때<br>
-            <strong>허리 하나도<br>안아팠어요"</strong>
-          </p>
-        </div>
-      </div>
     </div>
 
     <!-- 참여자 후기 이미지 -->
