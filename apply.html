@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  <title>회복 나침반 1:1 프로그램 6기 신청</title>
+  <title>회복 나침반 1:1 프로그램 신청</title>
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,7 +75,7 @@
 <div class="card">
   <div class="card-header">
     <div class="card-eyebrow">회복 나침반 · 1:1 프로그램</div>
-    <div class="card-title" id="app-title">6기 신청</div>
+    <div class="card-title" id="app-title">1:1 프로그램 신청</div>
     <div class="card-sub">병원 전 단계, 1:1 정밀 관리 프로그램</div>
   </div>
 
@@ -86,7 +86,7 @@
       <div class="info-box">
         <div class="ib-title">📋 프로그램 안내</div>
         <div class="ib-row">
-          정원: 한 기수 10명 제한<br>
+          정원: 동시 진행 10명 제한<br>
           참여 금액: <strong>199,000원/월</strong><br>
           진행기간: 총 12주 커리큘럼, 4주마다 연장 신청<br>
           시작일: 6월 15일 (전 인원 개별 미팅 완료 후)
@@ -169,8 +169,8 @@
     .then(function(d) {
       if (d.mode === 'waitlist') { location.replace('./apply-waitlist.html'); return; }
       var n = d.nextCohort || 7;
-      document.getElementById('app-title').textContent = n + '기 신청';
-      document.title = '회복 나침반 1:1 프로그램 ' + n + '기 신청';
+      document.getElementById('app-title').textContent = '1:1 프로그램 신청';
+      document.title = '회복 나침반 1:1 프로그램 신청';
     })
     .catch(function() {});
 
