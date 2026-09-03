@@ -231,6 +231,44 @@
   .proof-shot.wide { max-width: 760px; margin: 0 auto; }
   .proof-cap { padding: 10px 6px 4px; font-size: 13px; color: var(--ink-3); font-weight: 600; text-align: center; }
 
+  /* ===== 후기 벽 — 저절로 흐른다 (2026-09-03) =====
+     캡처 원본이 가로 131~442px 로 제각각이라, 폭을 억지로 맞추지 않는다.
+     늘리면 흐려지고, 잘라 맞추면 말이 잘린다. 원본 크기 그대로 가운데 세운다.
+     높이는 auto 라 어떤 비율이 와도 잘리는 일이 없다. */
+  .wall {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    height: 620px; overflow: hidden; position: relative;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+            mask-image: linear-gradient(180deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+  .wall-col { overflow: hidden; }
+  /* 두 줄이 같은 속도로 흐르면 기계처럼 보인다. 오른쪽을 느리게 둔다. */
+  .wall-track { display: flex; flex-direction: column; will-change: transform; }
+  .wall-track--a { animation: wall-up 78s linear infinite; }
+  .wall-track--b { animation: wall-up 104s linear infinite; }
+  /* 간격을 칸(set) 안에 두어야 두 벌의 높이가 정확히 같아지고,
+     -50% 지점에서 이음매가 안 보인다. */
+  .wall-set { display: flex; flex-direction: column; gap: 18px; padding-bottom: 18px; }
+  .wall-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 10px; box-shadow: var(--shadow-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wall-card img { display: block; width: auto; height: auto; max-width: 100%; border-radius: 8px; }
+  @keyframes wall-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  /* 읽고 싶은 것에 손을 올리면 멈춘다 */
+  .wall:hover .wall-track { animation-play-state: paused; }
+  @media (max-width: 720px) {
+    .wall { height: 460px; gap: 12px; }
+    .wall-set { gap: 12px; padding-bottom: 12px; }
+  }
+  /* 움직임이 불편한 분에게는 흐르지 않고 그대로 보여드린다 */
+  @media (prefers-reduced-motion: reduce) {
+    .wall { height: auto; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+    .wall-track { animation: none; }
+    .wall-set:nth-child(2) { display: none; }
+  }
+
   .hl-quote {
     background: #0e1822; color: #fff; border-radius: 20px; padding: 40px 44px; position: relative; overflow: hidden;
   }
@@ -990,6 +1028,31 @@
       </div>
     </div>
 
+    <!-- 후기 벽 — 저절로 흐른다 (2026-09-03)
+         참여자분들이 직접 남기신 만족 후기 36장. 손대지 않아도 위로 흐른다.
+         이미지는 원본보다 크게 늘리지 않는다 — 캡처라 늘리면 흐려진다.
+         높이는 자동이라 어떤 비율이든 잘리지 않는다. -->
+    <div class="proof-subhead reveal" style="margin-top:64px;">
+      <span class="ps-tag">있는 그대로</span>
+      <h3>참여자분들이 보내주신 말들</h3>
+    </div>
+    <div class="wall reveal" aria-label="참여자 후기 모음">
+      <div class="wall-col">
+        <div class="wall-track wall-track--a">
+          <!-- 같은 목록을 두 번 넣는다. 첫 벌이 다 지나가는 순간 둘째 벌이
+               같은 자리에 있어서 끊긴 느낌 없이 계속 돈다. -->
+          <div class="wall-set"></div>
+          <div class="wall-set" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="wall-col wall-col--b">
+        <div class="wall-track wall-track--b">
+          <div class="wall-set"></div>
+          <div class="wall-set" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1409,5 +1472,40 @@
       }
     })
     .catch(function() {});
+</script>
+
+<!-- 후기 벽 채우기 (2026-09-03)
+     36장을 두 줄에 번갈아 나눠 담고, 각 줄에 같은 목록을 두 벌 넣는다.
+     두 벌이라야 첫 벌이 다 올라간 순간 둘째 벌이 같은 자리에 있어 끊기지 않는다. -->
+<script>
+  (function () {
+    var TOTAL = 36;
+    var wall = document.querySelector('.wall');
+    if (!wall) return;
+
+    var cols = [
+      wall.querySelectorAll('.wall-track--a .wall-set'),
+      wall.querySelectorAll('.wall-track--b .wall-set')
+    ];
+
+    function card(n) {
+      var num = n < 10 ? '0' + n : '' + n;
+      var d = document.createElement('div');
+      d.className = 'wall-card';
+      var img = document.createElement('img');
+      img.src = './img/reviews/r' + num + '.png';
+      img.alt = '참여자 후기';
+      /* lazy 를 걸면 안 된다 — 벽이 계속 흐르는데 화면 밖 이미지가 아직
+         안 실려서 빈 칸이 지나간다. 36장 다 합쳐 350KB 남짓이라 한 번에 받는다. */
+      img.decoding = 'async';
+      d.appendChild(img);
+      return d;
+    }
+
+    for (var n = 1; n <= TOTAL; n++) {
+      var target = cols[(n - 1) % 2];   // 홀수는 왼쪽, 짝수는 오른쪽
+      for (var s = 0; s < target.length; s++) target[s].appendChild(card(n));
+    }
+  })();
 </script>
 </body></html>
