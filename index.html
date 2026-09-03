@@ -256,8 +256,12 @@
   }
   .wall-card img { display: block; width: auto; height: auto; max-width: 100%; border-radius: 8px; }
   @keyframes wall-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-  /* 읽고 싶은 것에 손을 올리면 멈춘다 */
-  .wall:hover .wall-track { animation-play-state: paused; }
+  /* 읽고 싶은 것에 마우스를 올리면 멈춘다.
+     마우스가 있는 기기에서만 건다 (2026-09-03). 폰에서는 한 번 누르면 그 자리가
+     hover 로 남아 흐름이 멈춘 채 다시 안 움직였다. 손가락에는 hover 가 없다. */
+  @media (hover: hover) and (pointer: fine) {
+    .wall:hover .wall-track { animation-play-state: paused; }
+  }
   @media (max-width: 720px) {
     .wall { height: 460px; gap: 12px; }
     .wall-set { gap: 12px; padding-bottom: 12px; }
@@ -922,7 +926,7 @@
           <span class="impact-num after">1</span>
         </div>
         <p class="impact-cap">통증점수 · 10점 만점</p>
-        <p class="impact-headline">통증 6 → 1, 그리고<br>50일째 그대로입니다</p>
+        <p class="impact-headline">통증 6 → 1, 그리고<br>이후 50일 넘어도 통증이 없었습니다</p>
         <p class="impact-quote">"한 달 전엔 앉아 있지도 못했던 미용실에서<br>앉아 있으며 마무리했다.<br>주위에서 많이 좋아졌구나 해주셨다"</p>
         <div class="impact-proof">
           <div class="impact-proof-cap">50일간 통증점수 추이</div>
