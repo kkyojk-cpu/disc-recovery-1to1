@@ -243,31 +243,13 @@
   .road-bar-k { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: 2px; color: #10b981; margin-bottom: 2px; }
   .road-bar-t { display: block; font-size: 19px; font-weight: 900; letter-spacing: -.5px; }
   .road-bar-t i { font-style: normal; font-size: 12px; font-weight: 700; color: #10b981; }
-  .road-view { flex: 1; position: relative; overflow: hidden; background: #f2fbf6; }
-  .road-track {
-    position: absolute; left: 0; top: 0; width: 100%;
-    padding: 12px; box-sizing: border-box;
-    animation: roadScroll 38s linear infinite alternate;
+  .road-view { flex: 1; position: relative; overflow: hidden; background: #eef7fb; }
+  /* 앱에서 그대로 찍은 지도 한 장이 흐른다. 그룹 랜딩과 같은 방식이다.
+     글자로 그려봤더니 앱의 잔디 지도와 너무 달라서, 실제 화면을 찍어 넣었다. */
+  .road-view img {
+    position: absolute; left: 0; top: 0; width: 100%; display: block;
+    animation: roadScroll 46s linear infinite alternate;
   }
-  .road-zone {
-    margin: 14px 2px 8px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em;
-    color: #64748b; text-transform: none;
-  }
-  .road-zone:first-child { margin-top: 2px; }
-  .road-step {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 7px;
-    background: #fff; border: 1px solid #d9ece3; border-radius: 12px; padding: 9px 11px;
-  }
-  .road-step b {
-    flex-shrink: 0; width: 26px; height: 26px; border-radius: 9px; background: #ecfdf5;
-    color: #047857; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center;
-  }
-  .road-step span { font-size: 12.5px; font-weight: 700; color: #1f2937; line-height: 1.45; }
-  .road-step span i { display: block; font-style: normal; font-size: 10.5px; font-weight: 700; color: #94a3b8; margin-top: 1px; }
-  .road-step.wall { border-color: #fcd9a4; background: #fffbf2; }
-  .road-step.wall span i { color: #b45309; }
-  .road-step.start { border-color: #a7f3d0; background: #ecfdf5; }
-  .road-step.start span i { color: #047857; }
   /* 아래(0단계)에서 시작해 위(12단계)까지 올라갔다가 되돌아온다 */
   /* 451px = 폰 높이 540 에서 위 초록 띠를 뺀 실제 보이는 높이. 재보고 맞췄다 —
      이 값이 크면 맨 아래 0단계가 화면 밖에 걸린 채로 멈춘다. */
@@ -276,7 +258,7 @@
     to   { transform: translateY(0); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .road-track { animation: none; transform: translateY(calc(-100% + 451px)); }
+    .road-view img { animation: none; transform: translateY(calc(-100% + 451px)); }
   }
   @media (max-width: 860px) {
     .road-screen { width: 265px; height: 480px; }
@@ -1153,25 +1135,7 @@
               <span class="road-bar-t">회복로드 <i>12단계</i></span>
             </div>
             <div class="road-view">
-              <div class="road-track">
-                <div class="road-zone">3구역 · 달리기로만 채우는 길</div>
-                <div class="road-step"><b>12</b><span>슬로우조깅 25분</span></div>
-                <div class="road-step"><b>11</b><span>슬로우조깅 23분</span></div>
-                <div class="road-step"><b>10</b><span>슬로우조깅 20분</span></div>
-                <div class="road-zone">2구역 · 걷기를 줄여가는 길</div>
-                <div class="road-step wall"><b>9</b><span>슬로우조깅 18분<i>고비</i></span></div>
-                <div class="road-step wall"><b>8</b><span>슬로우조깅 15분 + 걷기 5분<i>고비</i></span></div>
-                <div class="road-step"><b>7</b><span>슬로우조깅 13분 + 걷기 7분</span></div>
-                <div class="road-zone">1구역 · 걷기와 함께 가는 길</div>
-                <div class="road-step"><b>6</b><span>슬로우조깅 10분 + 걷기 10분</span></div>
-                <div class="road-step"><b>5</b><span>슬로우조깅 8분 + 걷기 10분</span></div>
-                <div class="road-step"><b>4</b><span>슬로우조깅 5분 + 걷기 10분</span></div>
-                <div class="road-step"><b>3</b><span>슬로우조깅 3분 + 걷기 10분</span></div>
-                <div class="road-step"><b>2</b><span>슬로우조깅 2분 + 걷기 8분</span></div>
-                <div class="road-step"><b>1</b><span>슬로우조깅 1분 + 걷기 9분</span></div>
-                <div class="road-zone">걷기 적응 구간</div>
-                <div class="road-step start"><b>0</b><span>걷기 10~20분<i>여기서 시작하셔도 됩니다</i></span></div>
-              </div>
+              <img src="./img/stagemap.jpg" alt="회복로드 지도 — 0단계 걷기부터 12단계 슬로우조깅 25분까지" decoding="async">
             </div>
           </div>
         </div>
