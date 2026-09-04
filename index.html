@@ -231,6 +231,61 @@
   .proof-shot.wide { max-width: 760px; margin: 0 auto; }
   .proof-cap { padding: 10px 6px 4px; font-size: 13px; color: var(--ink-3); font-weight: 600; text-align: center; }
 
+  /* ===== 회복로드 지도 — 저절로 오르내린다 (2026-09-04) =====
+     그룹 랜딩의 그 화면과 같은 인상이되, 캡처가 아니라 여기서 그린다.
+     1단계에서 시작해 12단계까지 올라갔다가 다시 내려온다(alternate). */
+  .road-phone { display: flex; justify-content: center; }
+  .road-screen {
+    width: 290px; height: 540px; border-radius: 30px; overflow: hidden; background: #fff;
+    border: 9px solid #1d2730; box-shadow: var(--shadow-lg); display: flex; flex-direction: column;
+  }
+  .road-bar { flex-shrink: 0; padding: 12px 16px 13px; background: #064e3b; color: #fff; }
+  .road-bar-k { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: 2px; color: #10b981; margin-bottom: 2px; }
+  .road-bar-t { display: block; font-size: 19px; font-weight: 900; letter-spacing: -.5px; }
+  .road-bar-t i { font-style: normal; font-size: 12px; font-weight: 700; color: #10b981; }
+  .road-view { flex: 1; position: relative; overflow: hidden; background: #f2fbf6; }
+  .road-track {
+    position: absolute; left: 0; top: 0; width: 100%;
+    padding: 12px; box-sizing: border-box;
+    animation: roadScroll 38s linear infinite alternate;
+  }
+  .road-zone {
+    margin: 14px 2px 8px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em;
+    color: #64748b; text-transform: none;
+  }
+  .road-zone:first-child { margin-top: 2px; }
+  .road-step {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 7px;
+    background: #fff; border: 1px solid #d9ece3; border-radius: 12px; padding: 9px 11px;
+  }
+  .road-step b {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 9px; background: #ecfdf5;
+    color: #047857; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center;
+  }
+  .road-step span { font-size: 12.5px; font-weight: 700; color: #1f2937; line-height: 1.45; }
+  .road-step span i { display: block; font-style: normal; font-size: 10.5px; font-weight: 700; color: #94a3b8; margin-top: 1px; }
+  .road-step.wall { border-color: #fcd9a4; background: #fffbf2; }
+  .road-step.wall span i { color: #b45309; }
+  .road-step.start { border-color: #a7f3d0; background: #ecfdf5; }
+  .road-step.start span i { color: #047857; }
+  /* 아래(0단계)에서 시작해 위(12단계)까지 올라갔다가 되돌아온다 */
+  /* 451px = 폰 높이 540 에서 위 초록 띠를 뺀 실제 보이는 높이. 재보고 맞췄다 —
+     이 값이 크면 맨 아래 0단계가 화면 밖에 걸린 채로 멈춘다. */
+  @keyframes roadScroll {
+    from { transform: translateY(calc(-100% + 451px)); }
+    to   { transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .road-track { animation: none; transform: translateY(calc(-100% + 451px)); }
+  }
+  @media (max-width: 860px) {
+    .road-screen { width: 265px; height: 480px; }
+    @keyframes roadScroll {
+      from { transform: translateY(calc(-100% + 391px)); }
+      to   { transform: translateY(0); }
+    }
+  }
+
   /* ===== 후기 벽 — 저절로 흐른다 (2026-09-03) =====
      캡처 원본이 가로 131~442px 로 제각각이라, 폭을 억지로 맞추지 않는다.
      늘리면 흐려지고, 잘라 맞추면 말이 잘린다. 원본 크기 그대로 가운데 세운다.
@@ -1078,15 +1133,49 @@
     <div class="app-row reveal">
       <div class="app-copy">
         <div class="app-tag">STEP 01 · 매일</div>
-        <h3 class="app-title">일일점검 7가지 +<br>회복 집중 기록</h3>
-        <p class="app-desc">활동 종류·시간, 컨디션 4종(수행 전·중·직후·다음날 아침), VAS 통증 점수까지 — 하루의 흐름을 정밀하게 남깁니다.</p>
+        <h3 class="app-title">오늘 어디까지 할지,<br>정해져 있습니다</h3>
+        <p class="app-desc">회복 과정을 <b>12단계</b>로 나눠뒀습니다. 시작할 때 몸 상태를 여쭙고 그 답에 맞는 자리부터 시작합니다. 아직 뛰기 어려우시면 <b>걷기만 하는 0단계</b>부터 시작하셔도 됩니다. 그다음부터는 지도 위에 내 자리가 있고, 오늘 할 양이 이미 정해져 있습니다.</p>
         <ul class="app-bullets">
-          <li>컨디션 체크 4종 + VAS 통증 점수(0~10)</li>
-          <li>활동·방사통에 대한 정밀 기록 4가지</li>
-          <li>수행 소감 · 방사통 범위 · 가장 힘들었던 순간</li>
+          <li>시작 전 아침 통증·컨디션을 묻고 오늘 양을 띄웁니다</li>
+          <li>타이머가 회차와 쉬는 시간까지 안내합니다</li>
+          <li>걷다가 아프면 그 자리에서 누르면 몇 분 몇 초였는지 남습니다</li>
+          <li>날짜가 아니라 <b>몸의 반응</b>으로 다음 단계가 정해집니다</li>
         </ul>
       </div>
-      <div class="app-visual"><img src="./img/img7.png" alt="병원에서 해답을 못 듣고 좋다는 치료를 반복하던 대화"></div>
+      <div class="app-visual">
+        <!-- 회복로드 지도 — 저절로 오르내린다 (2026-09-04).
+             그룹 랜딩과 같은 방식이되, 캡처 이미지가 아니라 여기서 직접 그린다.
+             글자라 어느 화면에서도 선명하고, 폰 크기에 따라 잘리지 않는다. -->
+        <div class="road-phone">
+          <div class="road-screen">
+            <div class="road-bar">
+              <span class="road-bar-k">1:1 나침반</span>
+              <span class="road-bar-t">회복로드 <i>12단계</i></span>
+            </div>
+            <div class="road-view">
+              <div class="road-track">
+                <div class="road-zone">3구역 · 달리기로만 채우는 길</div>
+                <div class="road-step"><b>12</b><span>슬로우조깅 25분</span></div>
+                <div class="road-step"><b>11</b><span>슬로우조깅 23분</span></div>
+                <div class="road-step"><b>10</b><span>슬로우조깅 20분</span></div>
+                <div class="road-zone">2구역 · 걷기를 줄여가는 길</div>
+                <div class="road-step wall"><b>9</b><span>슬로우조깅 18분<i>고비</i></span></div>
+                <div class="road-step wall"><b>8</b><span>슬로우조깅 15분 + 걷기 5분<i>고비</i></span></div>
+                <div class="road-step"><b>7</b><span>슬로우조깅 13분 + 걷기 7분</span></div>
+                <div class="road-zone">1구역 · 걷기와 함께 가는 길</div>
+                <div class="road-step"><b>6</b><span>슬로우조깅 10분 + 걷기 10분</span></div>
+                <div class="road-step"><b>5</b><span>슬로우조깅 8분 + 걷기 10분</span></div>
+                <div class="road-step"><b>4</b><span>슬로우조깅 5분 + 걷기 10분</span></div>
+                <div class="road-step"><b>3</b><span>슬로우조깅 3분 + 걷기 10분</span></div>
+                <div class="road-step"><b>2</b><span>슬로우조깅 2분 + 걷기 8분</span></div>
+                <div class="road-step"><b>1</b><span>슬로우조깅 1분 + 걷기 9분</span></div>
+                <div class="road-zone">걷기 적응 구간</div>
+                <div class="road-step start"><b>0</b><span>걷기 10~20분<i>여기서 시작하셔도 됩니다</i></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="app-row reverse reveal">
