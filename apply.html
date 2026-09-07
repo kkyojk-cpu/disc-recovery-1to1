@@ -109,16 +109,81 @@
       <div class="privacy-box">
         <div class="pv-title">개인정보 수집 및 이용 동의</div>
         <div class="pv-body">
-          1. 수집·이용 목적: 파일 링크 전송<br>
+          1. 수집·이용 목적: 프로그램 제공, 본인 확인, 안내 연락<br>
           2. 수집 항목: 이름, 휴대폰 번호<br>
-          3. 보유 기간: 수집 목적 달성 시까지 (관련 법령에 따름)<br>
-          4. 동의 거부 시 신청이 정상 접수되지 않습니다.<br>
-          5. 본 상품은 디지털 콘텐츠로, 결제 후 즉시 제공되는 특성상 단순 변심에 의한 환불은 제한될 수 있으며, 합리적 사유가 있는 경우 일별 계산하여 개별 환불이 진행될 수 있습니다.
+          3. 보유 기간: 프로그램 종료 후 3년 (관련 법령에 따름)<br>
+          4. 동의를 거부하실 수 있으나, 거부 시 프로그램을 제공해 드릴 수 없습니다.
         </div>
         <label class="privacy-agree">
           <input type="checkbox" id="privacy-cb">
           <span>개인정보 수집 및 이용에 동의합니다 <span style="color:#ef4444">*</span></span>
         </label>
+      </div>
+
+      <div class="privacy-box">
+        <div class="pv-title">건강정보 수집 및 이용 동의</div>
+        <div class="pv-body">
+          1. 수집·이용 목적: 안전한 활동량 결정, 중단이 필요한 신호 확인<br>
+          2. 수집 항목: 통증 정도, 진단명, 증상 부위와 시작 시기, 시술·수술 이력, 일일 활동 기록<br>
+          3. 수집 시점: 프로그램 시작 미팅 및 기록 앱 이용 시<br>
+          4. 보유 기간: 프로그램 종료 후 3년<br>
+          <b>※ 위 정보는 「개인정보 보호법」상 민감정보에 해당하여 별도로 동의를 받습니다.</b><br>
+          동의를 거부하실 수 있으나, 이 정보 없이는 활동량을 안전하게 정해 드릴 수 없습니다.
+        </div>
+        <label class="privacy-agree">
+          <input type="checkbox" id="health-cb">
+          <span>건강정보 수집 및 이용에 동의합니다 <span style="color:#ef4444">*</span></span>
+        </label>
+      </div>
+
+      <div class="privacy-box">
+        <div class="pv-title">개인정보 국외 이전 동의 <span style="color:#64748b;font-weight:400">(선택)</span></div>
+        <div class="pv-body">
+          기록은 해외 사업자가 운영하는 서버에 저장됩니다.<br>
+          1. 이전 항목: 이름, 연락처, 일일 기록<br>
+          2. 이전받는 자: Railway Corporation, Cloudinary Ltd.<br>
+          3. 이전 국가: 미국<br>
+          4. 이전 방법: 앱 이용 시 정보통신망을 통해 전송·저장<br>
+          5. 이용 목적: 기록 저장 및 프로그램 운영<br>
+          6. 보유 기간: 프로그램 종료 후 3년
+        </div>
+        <label class="privacy-agree">
+          <input type="checkbox" id="oversea-cb">
+          <span>개인정보 국외 이전에 동의합니다</span>
+        </label>
+      </div>
+
+      <!-- 연구 참여는 프로그램과 별개다. IRB 시정사항 2)②
+           동의 여부가 프로그램 이용에 영향을 주지 않음을 화면에 명시한다. -->
+      <div class="privacy-box" style="border-color:#a7f3d0;background:#f0fdf9">
+        <div class="pv-title">회복 기록 연구 참여 <span style="color:#64748b;font-weight:400">(선택)</span></div>
+        <div class="pv-body">
+          회복연구소는 참여자분들의 일일 기록을 모아, <b>허리디스크·좌골신경통이 있는 분이 어느 정도로 움직이는 것이 회복에 도움이 되는지</b>를 연구하고 있습니다. 이 연구는 보건복지부 지정 공용기관생명윤리위원회의 심의를 받고 있습니다.<br><br>
+          <b>동의하지 않으셔도 됩니다.</b><br>
+          · 프로그램의 내용·기간·비용에 어떠한 차이도 없습니다.<br>
+          · 코치가 활동량을 정할 때 연구 동의 여부를 보지 않습니다.<br>
+          · 언제든 철회하실 수 있고, 철회하시면 자료를 연구에서 뺍니다.<br><br>
+          <b>사용되는 것</b> 활동 종류와 시간, 컨디션, 통증 점수, 기록에 적으신 글, 연령대·성별·진단명<br>
+          <b>사용되지 않는 것</b> 이름, 연락처(자료에서 삭제) · 자세 확인용 동영상<br><br>
+          이름과 연락처를 지우고 일련번호로 바꾸며, 날짜는 "시작한 지 며칠째"로 바꿉니다. 적어주신 글에 누구인지 짐작될 만한 내용이 있으면 지웁니다.<br><br>
+          문의: 연구책임자 이재강 010-5049-1768
+        </div>
+        <label class="privacy-agree">
+          <input type="checkbox" id="research-cb">
+          <span>연구 목적 활용 및 결과 공표에 동의합니다</span>
+        </label>
+      </div>
+
+      <!-- 프로그램 개시 초기부터 신청 화면에 고지해 온 내용. IRB 시정사항 4) -->
+      <div class="privacy-box" style="border-color:#e2e8f0;background:#f8fafc">
+        <div class="pv-title">이 프로그램에 포함되지 않는 것</div>
+        <div class="pv-body">
+          · 치료·진단·처방 등 <b>의료행위</b><br>
+          · <b>통증 완화 보장</b><br>
+          · 개인 PT 형태의 운동 지도<br><br>
+          본 프로그램은 참여자가 기록한 활동량과 컨디션을 근거로 걷기·슬로우조깅의 수행 시간을 함께 정하는 <b>운동 안내</b>입니다. 진단·처방·시술을 하지 않으며, 의료기관 진료를 대체하지 않습니다. 대소변 조절 이상, 감각 소실, 힘빠짐 등의 신호가 확인되면 활동을 중단하고 병원 진료를 권해 드립니다.<br><br>
+          본 상품은 디지털 콘텐츠로, 결제 후 즉시 제공되는 특성상 단순 변심에 의한 환불은 제한될 수 있으며, 합리적 사유가 있는 경우 일별 계산하여 개별 환불이 진행될 수 있습니다.
+        </div>
       </div>
 
       <button class="btn-primary" id="btn-submit" disabled>이어서 신청하기</button>
@@ -174,29 +239,40 @@
     })
     .catch(function() {});
 
-  document.getElementById('privacy-cb').addEventListener('change', function() {
+  /* 필수는 개인정보·건강정보 둘뿐이다 (2026-09-07).
+     국외 이전과 연구 참여는 선택이라 체크하지 않아도 신청이 진행되어야 한다.
+     IRB 시정사항 2)① — 동의가 하나로 묶여 자율 선택이 안 되던 것을 나눴다. */
+  function refreshSubmit() {
     var name = document.getElementById('inp-name').value.trim();
     var phone = document.getElementById('inp-phone').value.trim();
-    document.getElementById('btn-submit').disabled = !(this.checked && name && phone);
-  });
+    var must = document.getElementById('privacy-cb').checked
+            && document.getElementById('health-cb').checked;
+    document.getElementById('btn-submit').disabled = !(must && name && phone);
+  }
 
+  ['privacy-cb', 'health-cb', 'oversea-cb', 'research-cb'].forEach(function(id) {
+    document.getElementById(id).addEventListener('change', refreshSubmit);
+  });
   ['inp-name', 'inp-phone'].forEach(function(id) {
-    document.getElementById(id).addEventListener('input', function() {
-      var name = document.getElementById('inp-name').value.trim();
-      var phone = document.getElementById('inp-phone').value.trim();
-      var agreed = document.getElementById('privacy-cb').checked;
-      document.getElementById('btn-submit').disabled = !(agreed && name && phone);
-    });
+    document.getElementById(id).addEventListener('input', refreshSubmit);
   });
 
   document.getElementById('btn-submit').addEventListener('click', async function() {
     var name = document.getElementById('inp-name').value.trim();
     var phone = document.getElementById('inp-phone').value.trim();
     var source = new URLSearchParams(window.location.search).get('source') || undefined;
+    /* 누가 무엇에 동의했는지 시각과 함께 남긴다. 나중에 증명해야 한다. */
+    var consent = {
+      privacy: document.getElementById('privacy-cb').checked,
+      health: document.getElementById('health-cb').checked,
+      oversea: document.getElementById('oversea-cb').checked,
+      research: document.getElementById('research-cb').checked,
+      at: new Date().toISOString()
+    };
     fetch('https://recovery-log-production.up.railway.app/api/apply-submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, phone: phone, program: '1to1', source: source })
+      body: JSON.stringify({ name: name, phone: phone, program: '1to1', source: source, consent: consent })
     }).catch(function() {});
     document.getElementById('form-screen').classList.add('hidden');
     document.getElementById('done-screen').classList.remove('hidden');
