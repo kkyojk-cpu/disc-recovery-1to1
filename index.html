@@ -310,6 +310,46 @@
     .wall-set:nth-child(2) { display: none; }
   }
 
+  /* ===== 뛰는 띠 — 후기 벽과 같은 장치, 방향만 가로 (2026-09-08)
+     후기 벽이 "말"이면 이쪽은 "몸"이다. 그래서 붙여 둔다.
+     참여자 영상은 알아볼 수 없게 처리한 것만 쓴다. 대표 영상은 원본 그대로. */
+  .ps-lede { margin: 12px 0 0; color: var(--ink-2); font-size: clamp(14.5px, 1.3vw, 16.5px); line-height: 1.75; max-width: 620px; }
+  .runs {
+    overflow: hidden; position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+  .runs-track { display: flex; width: max-content; will-change: transform; animation: runs-left 64s linear infinite; }
+  /* 간격을 칸(set) 안에 두어야 두 벌의 폭이 정확히 같아지고, -50% 에서 이음매가 안 보인다 */
+  .runs-set { display: flex; gap: 16px; padding-right: 16px; }
+  .runs-card {
+    position: relative; flex: 0 0 auto; width: 248px; height: 248px;
+    border-radius: 16px; overflow: hidden; background: #0e1822;
+    box-shadow: var(--shadow-sm);
+  }
+  .runs-card video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  /* 대표 칸에만 붙는다. 영상 자체를 가리지 않게 아래 그늘 위에 얹는다. */
+  .runs-card .rc-tag {
+    position: absolute; left: 10px; bottom: 10px; z-index: 1;
+    color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .02em;
+  }
+  .runs-card:has(.rc-tag)::after {
+    content: ''; position: absolute; inset: auto 0 0 0; height: 64px;
+    background: linear-gradient(180deg, transparent, rgba(14,24,34,.6));
+  }
+  @keyframes runs-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (hover: hover) and (pointer: fine) {
+    .runs:hover .runs-track { animation-play-state: paused; }
+  }
+  @media (max-width: 720px) {
+    .runs-card { width: 172px; height: 172px; border-radius: 14px; }
+    .runs-set { gap: 12px; padding-right: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .runs-track { animation: none; }
+    .runs { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+  }
+
   .hl-quote {
     background: #0e1822; color: #fff; border-radius: 20px; padding: 40px 44px; position: relative; overflow: hidden;
   }
@@ -1097,11 +1137,40 @@
   </div>
 </section>
 
-
-
-
-
-
+<!-- ===== 뛰는 띠 (2026-09-08) =====
+     후기 벽 바로 뒤에 둔다. 말 다음에 몸이 온다.
+     참여자 영상은 알아볼 수 없게 처리한 것만 넣는다. 대표 영상만 원본. -->
+<section class="section" id="runs" style="padding-top:0;">
+  <div class="wrap">
+    <div class="proof-subhead reveal">
+      <span class="ps-tag">기록 밖에서</span>
+      <h3>우리는 함께 모든 진행상황을 공유합니다</h3>
+      <p class="ps-lede">슬로우조깅은 이 속도로 뜁니다.</p>
+    </div>
+  </div>
+  <div class="runs reveal" aria-label="참여자와 대표가 실제로 뛰는 모습">
+    <div class="runs-track">
+      <div class="runs-set">
+        <div class="runs-card"><video src="img/runs/run1.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run4.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run2.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run5.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run3.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run6.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run7.mp4" muted loop playsinline preload="none"></video></div>
+      </div>
+      <div class="runs-set" aria-hidden="true">
+        <div class="runs-card"><video src="img/runs/run1.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run4.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run2.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run5.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run3.mp4" muted loop playsinline preload="none"></video><span class="rc-tag">회복연구소 대표</span></div>
+        <div class="runs-card"><video src="img/runs/run6.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="runs-card"><video src="img/runs/run7.mp4" muted loop playsinline preload="none"></video></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== HOW IT WORKS / APP ===== -->
 <section class="section" id="how">
@@ -1460,6 +1529,23 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* 뛰는 띠 — 화면에 들어온 것만 돌린다 (2026-09-08)
+     열네 칸을 한꺼번에 돌리면 폰이 버거워진다. 보이는 것만 재생하고 나머지는 멈춘다.
+     preload="none" 이라 화면 밖 영상은 내려받지도 않는다. */
+  (function () {
+    const vids = document.querySelectorAll('.runs-card video');
+    if (!vids.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) { v.play().catch(() => {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(v => vio.observe(v));
+  })();
 </script>
 
 
