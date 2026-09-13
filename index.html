@@ -880,6 +880,20 @@
     border-radius: 4px 13px 13px 13px; padding: 9px 12px;
     font-size: 12.5px; color: var(--ink); line-height: 1.65; margin: 0;
   }
+  /* 회복연구소가 말하는 줄은 참여자 줄과 구별되게 둔다. */
+  .oc-face.lab { background: var(--blue-700); color: #fff; }
+  .oc-bub.lab { background: var(--blue-50); border-color: var(--blue-200); }
+  /* 공지는 대화가 아니라 위에서 내려오는 것이라 말풍선을 쓰지 않는다. */
+  .oc-notice {
+    display: flex; align-items: flex-start; gap: 9px;
+    background: var(--ink); border-radius: 12px;
+    padding: 11px 13px; margin-bottom: 14px;
+  }
+  .oc-notice-k {
+    flex: 0 0 auto; font-size: 10px; font-weight: 800; letter-spacing: .08em;
+    color: #fee500; padding-top: 2px;
+  }
+  .oc-notice-b { margin: 0; font-size: 12.5px; color: #fff; line-height: 1.6; }
 
   @media (max-width: 560px) {
     .wrap { padding: 0 18px; }
@@ -1353,12 +1367,13 @@
 
     <div class="app-row reveal">
       <div class="app-copy">
-        <div class="app-tag">STEP 05 · 함께</div>
+        <div class="app-tag">STEP 05 · 실시간</div>
         <h3 class="app-title">참여자 전용<br>오픈채팅방</h3>
-        <p class="app-desc">회복연구소의 피드백은 앱 안에서 1:1로 드립니다. 오픈채팅방은 그 바깥입니다 ─ 같은 길을 걷고 있는 분들이 한 방에 있습니다.</p>
+        <p class="app-desc">매일의 상태 피드백은 앱 안에서 1:1로 드립니다. 오픈채팅방은 <b>공지를 받는 곳</b>이자, 급한 문제나 고민이 생겼을 때 <b>기다리지 않고 바로 여쭤보는 곳</b>입니다.</p>
         <ul class="app-bullets">
           <li>참여 확정과 동시에 초대해 드립니다</li>
-          <li>먼저 지나간 분들이 어디까지 왔는지 매일 보입니다</li>
+          <li>앱 링크·가이드 영상 같은 안내를 여기서 받습니다</li>
+          <li>지금 생긴 문제는 다음 기록을 기다리지 않고 바로 말씀하시면 됩니다</li>
         </ul>
       </div>
       <div class="app-visual">
@@ -1372,25 +1387,22 @@
           </div>
           <div class="oc-body">
             <div class="oc-day">오늘</div>
-            <div class="oc-msg">
-              <span class="oc-face">박</span>
-              <div>
-                <div class="oc-who">박○○</div>
-                <p class="oc-bub">오늘 처음으로 단독 18분 뛰었습니다</p>
-              </div>
+            <div class="oc-notice">
+              <span class="oc-notice-k">공지</span>
+              <p class="oc-notice-b">이번 주 가이드 영상과 앱 링크 올려둡니다</p>
             </div>
             <div class="oc-msg">
               <span class="oc-face">김</span>
               <div>
                 <div class="oc-who">김○○</div>
-                <p class="oc-bub">슬조 25분, 허리 컨디션이 많이 좋았어요</p>
+                <p class="oc-bub">걷는 중에 저림이 올라왔는데 멈추는 게 맞을까요?</p>
               </div>
             </div>
             <div class="oc-msg">
-              <span class="oc-face">정</span>
+              <span class="oc-face lab">연</span>
               <div>
-                <div class="oc-who">정○○</div>
-                <p class="oc-bub">감사합니다 다음 주에도 같이 해요!</p>
+                <div class="oc-who">회복연구소</div>
+                <p class="oc-bub lab">네, 지금 보고 있습니다</p>
               </div>
             </div>
           </div>
