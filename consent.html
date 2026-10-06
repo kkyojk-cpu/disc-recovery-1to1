@@ -65,6 +65,19 @@
       color:var(--mute);background:#fff;border:1px solid var(--line);border-radius:10px;
       cursor:pointer;font-family:inherit;text-align:center}
 
+  /* 아래 고정 버튼 — 긴 글을 안 내려가도 동의 칸으로 갈 수 있게 */
+  .jump{position:fixed;left:0;right:0;bottom:0;z-index:50;
+        background:rgba(250,248,242,.96);border-top:1px solid var(--line);
+        padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+        backdrop-filter:blur(6px)}
+  .jump .inner{max-width:680px;margin:0 auto}
+  .jump a{display:block;text-align:center;padding:15px;font-size:16px;font-weight:900;
+          color:#fff;background:var(--green);border-radius:10px;text-decoration:none;
+          letter-spacing:-.01em}
+  .jump a:active{background:var(--deep)}
+  .jump .sub2{text-align:center;font-size:12.5px;color:var(--mute);margin-top:7px}
+  .wrap{padding-bottom:130px}
+
   #done{display:none;text-align:center;padding:60px 20px}
   #done .ic{font-size:52px;margin-bottom:18px}
   #done h2{font-size:25px;margin-bottom:12px}
@@ -76,6 +89,13 @@
 </head>
 <body>
 <div class="wrap">
+
+<div class="jump" id="jump">
+  <div class="inner">
+    <a href="#consent">아래 동의 칸으로 바로 가기 ↓</a>
+    <div class="sub2">체크 네 번 · 성함 한 번이면 끝납니다 (30초)</div>
+  </div>
+</div>
 
 <div id="form">
   <div class="head">
@@ -180,7 +200,7 @@
   연구대상자의 권리에 관한 문의 · 보건복지부 지정 공용기관생명윤리위원회</p>
 
   <!-- ── 동의 ── -->
-  <div class="consent">
+  <div class="consent" id="consent">
     <h2>동 의 서</h2>
     <p style="font-size:15px;color:var(--mute);margin-bottom:6px">
     위 설명문을 읽었으며, 궁금한 점을 물어볼 기회를 가졌습니다. 아래 항목에 각각 표시해 주십시오.</p>
@@ -212,9 +232,9 @@
     </div>
 
     <div class="name">
-      <label for="nm">성함을 적어주십시오</label>
-      <input type="text" id="nm" placeholder="프로그램에서 쓰시던 이름" autocomplete="off">
-      <div class="hint">앱에 등록된 이름과 같게 적어주셔야 기록을 찾을 수 있습니다.</div>
+      <label for="nm">성함</label>
+      <input type="text" id="nm" placeholder="홍길동" autocomplete="off">
+      <div class="hint">어느 분 기록인지 찾기 위해서입니다. 닉네임이 아니라 성함으로 적어주시면 됩니다.</div>
     </div>
 
     <button class="btn" id="go" disabled>동의합니다</button>
@@ -259,6 +279,7 @@
       method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
     }).catch(function(){}).finally(function(){
       document.getElementById('form').style.display='none';
+      var j=document.getElementById('jump'); if(j) j.style.display='none';
       var d=document.getElementById('done'); d.style.display='block';
       if(!agreed){
         d.querySelector('.ic').textContent='○';
@@ -268,6 +289,14 @@
       window.scrollTo(0,0);
     });
   }
+  // 동의 칸이 화면에 보이면 아래 고정 버튼을 숨긴다
+  var jump=document.getElementById('jump'), box=document.getElementById('consent');
+  if(window.IntersectionObserver && jump && box){
+    new IntersectionObserver(function(es){
+      jump.style.display = es[0].isIntersecting ? 'none' : 'block';
+    },{threshold:0.08}).observe(box);
+  }
+
   go.addEventListener('click',function(){send(true);});
   document.getElementById('nope').addEventListener('click',function(){
     if(!nm.value.trim()){ nm.focus(); alert('성함만 적어주시면 됩니다.'); return; }
