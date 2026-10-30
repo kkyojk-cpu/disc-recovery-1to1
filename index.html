@@ -564,10 +564,14 @@
   .img-frame-label { padding: 14px 20px; font-size: 12.5px; font-weight: 700; color: var(--blue-700); background: var(--blue-50); border-bottom: 1px solid var(--blue-200); letter-spacing: .04em; }
   .img-frame-label--accent { color: var(--accent); background: var(--accent-soft); border-color: rgba(217,119,87,.25); }
   .img-frame img { width: 100%; display: block; }
+  .img-masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .img-col { display: flex; flex-direction: column; gap: 20px; }
+  .img-quote { flex: 1; display: flex; align-items: center; justify-content: center; }
+  .img-quote p { padding: 40px 36px; font-size: 22px; font-weight: 700; line-height: 1.7; color: var(--ink-2); text-align: center; word-break: keep-all; }
   .proof-subhead { margin-bottom: 28px; }
   .proof-subhead .ps-tag { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
   .proof-subhead h3 { margin: 8px 0 0; font-size: clamp(19px, 2.4vw, 24px); font-weight: 800; letter-spacing: -.025em; line-height: 1.4; }
-  @media (max-width: 680px) { .img-grid-2 { grid-template-columns: 1fr; } }
+  @media (max-width: 680px) { .img-grid-2 { grid-template-columns: 1fr; } .img-masonry { display: flex; flex-direction: column; } .img-col { display: contents; } .img-quote { flex: none; display: block; } .img-quote p { padding: 22px 20px; font-size: 17px; font-weight: 600; text-align: left; word-break: normal; } }
 
   /* ===== 비포애프터 블록 ===== */
   .ba-block {
@@ -1132,30 +1136,35 @@
       <span class="ps-tag">참여자분들의 느낀점들</span>
       <h3>참여자분들이 직접 남긴 말</h3>
     </div>
-    <div class="img-grid-2 reveal">
-      <div class="img-frame">
-        <div class="img-frame-label">참여자 설문 후기</div>
-        <img src="./img/img3.png" alt="참여자분들의 느낀점들">
+    <!-- PC 에서 칸을 두 줄로 맞추면 짧은 칸 밑이 하얗게 빈다 → 두 기둥에 따로 쌓는다 (2026-10-30).
+         기둥 높이가 맞게 나눴고, 남는 자리는 인용 칸이 늘어나 채운다.
+         폰은 기둥을 풀고 order 로 원래 순서(설문·설문추가·일일기록·인용·변화·후기) 그대로 -->
+    <div class="img-masonry reveal">
+      <div class="img-col">
+        <div class="img-frame" style="order:1">
+          <div class="img-frame-label">참여자 설문 후기</div>
+          <img src="./img/img3.png" alt="참여자분들의 느낀점들">
+        </div>
+        <div class="img-frame" style="order:2">
+          <img src="./img/img11.png" alt="참여자 설문 후기 추가">
+        </div>
+        <div class="img-frame" style="order:6">
+          <div class="img-frame-label">참여자 후기</div>
+          <img src="./img/img6.png" alt="참여자 후기">
+        </div>
       </div>
-      <div class="img-frame">
-        <img src="./img/img11.png" alt="참여자 설문 후기 추가">
-      </div>
-      <div class="img-frame">
-        <div class="img-frame-label">그 외 참여자 일일 기록</div>
-        <img src="./img/img4.png" alt="그 외 참여자 기록">
-      </div>
-      <div class="img-frame">
-        <p style="padding:22px 20px;font-size:17px;font-weight:600;line-height:1.7;color:var(--ink-2);">"1점대에 가까운 점수로 내려온 것 같고 허리에 대한 생각을 조금씩 덜하게 되는 정말 일상의 회복이 들어오고 있어서 기쁘다!"</p>
-      </div>
-    </div>
-    <div class="img-grid-2 reveal" style="margin-top:20px;">
-      <div class="img-frame img-frame--accent">
-        <div class="img-frame-label img-frame-label--accent">변화는 반드시 생깁니다</div>
-        <img src="./img/img5.png" alt="변화는 반드시 생깁니다">
-      </div>
-      <div class="img-frame">
-        <div class="img-frame-label">참여자 후기</div>
-        <img src="./img/img6.png" alt="참여자 후기">
+      <div class="img-col">
+        <div class="img-frame" style="order:3">
+          <div class="img-frame-label">그 외 참여자 일일 기록</div>
+          <img src="./img/img4.png" alt="그 외 참여자 기록">
+        </div>
+        <div class="img-frame img-frame--accent" style="order:5">
+          <div class="img-frame-label img-frame-label--accent">변화는 반드시 생깁니다</div>
+          <img src="./img/img5.png" alt="변화는 반드시 생깁니다">
+        </div>
+        <div class="img-frame img-quote" style="order:4">
+          <p>"1점대에 가까운 점수로 내려온 것 같고 허리에 대한 생각을 조금씩 덜하게 되는 정말 일상의 회복이 들어오고 있어서 기쁘다!"</p>
+        </div>
       </div>
     </div>
 
