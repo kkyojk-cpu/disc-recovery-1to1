@@ -16,235 +16,213 @@
        -webkit-font-smoothing:antialiased;line-height:1.7}
   .wrap{max-width:680px;margin:0 auto;padding:28px 20px 60px}
 
-  .head{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:24px}
+  .head{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:22px}
   .eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--green);margin-bottom:8px}
   h1{font-size:25px;font-weight:900;letter-spacing:-.025em;line-height:1.36}
-  .meta{font-size:14px;color:var(--mute);margin-top:12px;line-height:1.7}
 
   .lead{background:#fff;border:1px solid var(--line);border-left:5px solid var(--green);
-        padding:20px 22px;margin-bottom:26px;font-size:16px;line-height:1.8}
+        padding:18px 20px;margin-bottom:20px;font-size:16px;line-height:1.8}
   .lead b{font-weight:900}
+  .lead ul{margin:8px 0 0 18px;font-size:15.5px}
 
-  h2{font-size:18px;font-weight:900;margin:30px 0 10px;letter-spacing:-.02em}
-  p{font-size:15.5px;margin-bottom:12px}
+  /* 설명문 전문 — 접어 둔다 */
+  details.full{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:22px}
+  details.full summary{cursor:pointer;padding:14px 18px;font-size:15px;font-weight:800;color:var(--mute);list-style:none}
+  details.full summary::-webkit-details-marker{display:none}
+  details.full summary:after{content:" ▾"}
+  details.full[open] summary:after{content:" ▴"}
+  details.full .body{padding:0 18px 18px}
+  h2{font-size:17px;font-weight:900;margin:24px 0 8px;letter-spacing:-.02em}
+  p{font-size:15px;margin-bottom:10px}
   p b{font-weight:800}
-  ul{margin:0 0 14px 20px;font-size:15.5px}
-  li{margin-bottom:6px}
-
-  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-bottom:16px;background:#fff}
-  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;line-height:1.56}
-  th{background:#f2ecdd;font-weight:800;width:132px}
-
-  .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:18px}
+  ul{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:5px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;background:#fff}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;line-height:1.55;vertical-align:top}
+  th{background:#f2ecdd;font-weight:800;width:120px}
 
   /* 동의 */
-  .consent{background:#fff;border:2px solid var(--green);border-radius:12px;padding:24px 22px;margin-top:34px}
-  .consent h2{margin-top:0;color:var(--deep);font-size:21px}
-  .ci{display:flex;gap:13px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
-  .ci:last-of-type{border-bottom:0}
-  .ci input{width:24px;height:24px;flex:none;margin-top:2px;accent-color:var(--green);cursor:pointer}
-  .ci label{font-size:15.5px;line-height:1.66;cursor:pointer;flex:1}
-  .ci label b{font-weight:900}
-  .ci .req{color:var(--warn);font-weight:900;font-size:13.5px}
-  .ci .opt{color:var(--green);font-weight:900;font-size:13.5px}
+  .consent{background:#fff;border:2px solid var(--green);border-radius:12px;padding:22px 20px}
+  .consent h3{font-size:19px;font-weight:900;color:var(--deep);margin-bottom:10px}
+  .items{list-style:none;margin:0 0 6px;font-size:15.5px}
+  .items li{padding:9px 0;border-bottom:1px solid var(--line);line-height:1.6}
+  .items li:last-child{border-bottom:0}
+  .items b{font-weight:900}
+  .ci{display:flex;gap:12px;align-items:flex-start;padding:12px 0 4px}
+  .ci input{width:22px;height:22px;flex:none;margin-top:3px;accent-color:var(--green);cursor:pointer}
+  .ci label{font-size:14.5px;line-height:1.6;cursor:pointer;flex:1;color:var(--mute)}
 
-  .name{margin-top:20px}
+  .name{margin-top:16px}
   .name label{display:block;font-size:15px;font-weight:800;margin-bottom:8px}
   .name input{width:100%;padding:14px 15px;font-size:17px;border:2px solid var(--line);
               border-radius:8px;font-family:inherit}
   .name input:focus{outline:none;border-color:var(--green)}
-  .hint{font-size:13.5px;color:var(--mute);margin-top:7px;line-height:1.6}
+  .hint{font-size:13px;color:var(--mute);margin-top:6px;line-height:1.6}
+  .who{margin-top:16px;font-size:17px;font-weight:800}
+  .who a{font-size:13.5px;font-weight:500;color:var(--mute);margin-left:8px}
 
-  .btn{width:100%;margin-top:22px;padding:17px;font-size:17px;font-weight:900;color:#fff;
+  .btn{width:100%;margin-top:18px;padding:18px;font-size:18px;font-weight:900;color:#fff;
        background:var(--green);border:0;border-radius:10px;cursor:pointer;font-family:inherit;
        letter-spacing:-.01em}
-  .btn:disabled{background:#c5cdc8;cursor:not-allowed}
-  .btn:not(:disabled):active{background:var(--deep)}
-
-  .no{display:block;width:100%;margin-top:12px;padding:14px;font-size:15px;font-weight:700;
+  .btn:active{background:var(--deep)}
+  .no{display:block;width:100%;margin-top:10px;padding:12px;font-size:14px;font-weight:700;
       color:var(--mute);background:#fff;border:1px solid var(--line);border-radius:10px;
       cursor:pointer;font-family:inherit;text-align:center}
-
-  /* 아래 고정 버튼 — 긴 글을 안 내려가도 동의 칸으로 갈 수 있게 */
-  .jump{position:fixed;left:0;right:0;bottom:0;z-index:50;
-        background:rgba(250,248,242,.96);border-top:1px solid var(--line);
-        padding:12px 20px calc(12px + env(safe-area-inset-bottom));
-        backdrop-filter:blur(6px)}
-  .jump .inner{max-width:680px;margin:0 auto}
-  .jump a{display:block;text-align:center;padding:15px;font-size:16px;font-weight:900;
-          color:#fff;background:var(--green);border-radius:10px;text-decoration:none;
-          letter-spacing:-.01em}
-  .jump a:active{background:var(--deep)}
-  .jump .sub2{text-align:center;font-size:12.5px;color:var(--mute);margin-top:7px}
-  .wrap{padding-bottom:130px}
 
   #done{display:none;text-align:center;padding:60px 20px}
   #done .ic{font-size:52px;margin-bottom:18px}
   #done h2{font-size:25px;margin-bottom:12px}
   #done p{font-size:16px;color:var(--mute)}
 
-  .foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
-        font-size:13.5px;color:var(--faint);line-height:1.7}
+  .foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+        font-size:13px;color:var(--faint);line-height:1.7}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<div class="jump" id="jump">
-  <div class="inner">
-    <a href="#consent">아래 동의 칸으로 바로 가기 ↓</a>
-    <div class="sub2">체크 네 번 · 성함 한 번이면 끝납니다 (30초)</div>
-  </div>
-</div>
-
 <div id="form">
   <div class="head">
     <div class="eyebrow">허리디스크 회복연구소</div>
     <h1>남겨주신 기록을<br>연구에 사용해도 될지 여쭙습니다</h1>
-    <div class="meta">
-      연구과제명 · 허리디스크·좌골신경통 환자의 활동 강도와 증상 변화의 관련성<br>
-      허리디스크 회복연구소
-    </div>
   </div>
-
-  <div class="lead">
-    안녕하세요. 회복나침반 프로그램을 운영하는 허리디스크 회복연구소입니다.<br><br>
-    <b>솔직하게 말씀드립니다.</b> 처음 프로그램을 시작하실 때는 연구 계획이 없었습니다.
-    그래서 기록이 연구에 쓰일 수 있다는 안내를 드리지 못했습니다.
-    기록이 쌓이고 나서야 이 자료로 무엇을 알 수 있을지 살펴보게 되었고,
-    정식 절차를 밟기 위해 <b>공용기관생명윤리위원회</b>의 심의를 신청했습니다.<br><br>
-    위원회에서 <b>“참여자에게 먼저 동의를 받으라”</b>고 하여 이렇게 여쭙니다.<br><br>
-    <b>동의하지 않으셔도 아무 일도 일어나지 않습니다.</b>
-    이미 받으신 프로그램 내용에는 어떠한 변화도 없고, 앞으로 다시 참여하시더라도 불이익이 없습니다.
-  </div>
-
-  <h2>1. 무엇을 알아보려고 합니까</h2>
-  <p>허리디스크나 좌골신경통이 있는 분이 <b>얼마나 움직였을 때 증상이 어떻게 달라지는지</b>를 알아보려 합니다.</p>
-  <p>“아프면 쉬어야 한다”와 “움직여야 낫는다” 사이에서 많은 분들이 혼란스러워하십니다.
-  여러분이 매일 남겨주신 기록에는 <b>얼마나 걸었고, 얼마나 뛰었고, 그날 몸이 어땠는지</b>가 날짜별로 들어 있습니다.</p>
-
-  <h2>2. 어떤 자료를 사용합니까</h2>
-  <p>프로그램에 참여하시는 동안 <b>직접 입력해 주신 기록만</b> 사용합니다.
-  새로 검사를 받으시거나 추가로 무엇을 하실 필요는 없습니다.</p>
-  <div class="box">
-    <p style="margin-bottom:8px"><b>사용하는 것</b></p>
-    <ul>
-      <li>활동 종류(걷기·슬로우조깅·휴식)와 수행한 시간</li>
-      <li>활동 전·중·직후·다음날 아침의 컨디션</li>
-      <li>통증 점수(0~10)</li>
-      <li>활동 소감, 힘들었던 순간, 상세 기록에 적어주신 글</li>
-      <li>시작할 때 알려주신 연령대·성별·진단명·증상 시작 시기·직업 유형</li>
-    </ul>
-    <p style="margin-bottom:8px;margin-top:14px"><b>사용하지 않는 것</b></p>
-    <ul style="margin-bottom:0">
-      <li>성명, 연락처 — 연구 자료에서 <b>삭제</b>합니다</li>
-      <li>자세 확인을 위해 올려주신 동영상 — <b>연구에 쓰지 않습니다</b></li>
-    </ul>
-  </div>
-
-  <h2>3. 이름은 어떻게 됩니까</h2>
-  <p><b>연구 자료에는 성함과 연락처가 들어가지 않습니다.</b></p>
-  <ul>
-    <li>성함과 연락처를 지우고 <b>일련번호(예: P-001)</b>로 바꿉니다</li>
-    <li>생년월일은 <b>연령대(40대·50대)</b>로만 표시합니다</li>
-    <li>날짜는 실제 날짜 대신 <b>“시작한 지 며칠째”</b>로 바꿉니다</li>
-    <li>적어주신 글에 지명·직장 이름·가족 관계처럼 누구인지 짐작될 내용이 있으면 <b>지우거나 바꿉니다</b></li>
-  </ul>
-  <p>성함과 일련번호를 연결한 표는 연구책임자만 볼 수 있는 곳에 따로 보관하며,
-  <b>연구가 끝나면 바로 없앱니다.</b></p>
-
-  <h2>4. 결과는 어디에 발표됩니까</h2>
-  <p>학술지 게재 또는 학술대회 발표를 계획하고 있습니다.
-  <b>발표되는 내용에는 개인을 알아볼 수 있는 정보가 포함되지 않습니다.</b>
-  적어주신 글의 일부를 인용할 수 있는데, 이때도 누구인지 알 수 없도록 처리합니다.
-  인용을 원하지 않으시면 아래 5번에 표시하지 않으시면 됩니다.</p>
-
-  <h2>5. 참여하시면 어떤 점이 좋습니까</h2>
-  <p><b>참여하신다고 해서 직접 얻으시는 이익은 없습니다.</b> 사례금도 없습니다.
-  다만 이 연구의 결과는, 앞으로 같은 통증으로 어떻게 움직여야 할지 몰라 헤매는 분들에게 근거가 될 수 있습니다.</p>
-
-  <h2>6. 위험한 점은 없습니까</h2>
-  <p>이미 기록된 자료를 보는 연구이므로 <b>몸에 가해지는 위험은 없습니다.</b>
-  개인정보가 새어 나갈 위험이 남는데, 위 3번의 방법으로 이를 최대한 줄입니다.</p>
-
-  <h2>7. 자료가 해외에 보관됩니다</h2>
-  <p>기록은 해외 사업자가 운영하는 서버에 저장되어 있습니다.
-  이는 <b>개인정보의 국외 이전</b>에 해당하므로 따로 알려드립니다.</p>
-  <table>
-    <tr><th>이전되는 항목</th><td>성명, 연락처, 일일 기록</td></tr>
-    <tr><th>이전받는 자</th><td>Railway Corporation · Cloudinary Ltd.</td></tr>
-    <tr><th>이전 국가</th><td>미국</td></tr>
-    <tr><th>이전 방법</th><td>앱 이용 시 정보통신망을 통해 전송·저장</td></tr>
-    <tr><th>이용 목적</th><td>프로그램 운영 및 기록 보관</td></tr>
-    <tr><th>보유 기간</th><td>연구 종료 후 3년</td></tr>
-  </table>
-  <p><b>이 항목은 거부하실 수 있습니다.</b> 거부하시면 자료를 연구에 사용하지 않습니다.</p>
-
-  <h2>8. 마음이 바뀌면 어떻게 합니까</h2>
-  <p><b>언제든지 그만두실 수 있습니다.</b> 이유를 말씀하지 않으셔도 됩니다.
-  아래 연락처로 알려주시면 <b>자료를 연구에서 빼고 없앱니다.</b>
-  다만 이미 발표된 내용은 되돌릴 수 없습니다.<br>
-  연락은 늘 쓰시던 <b><a href="http://pf.kakao.com/_xmnxfyn" target="_blank" style="color:var(--green)">카카오 채널</a></b>로 주시면 됩니다.</p>
-
-  <h2>9. 이 연구로 연구자가 돈을 법니까</h2>
-  <p><b>있는 그대로 말씀드립니다.</b> 저희는 여러분이 참여하셨던 유료 프로그램의 운영자입니다.
-  연구 결과가 프로그램에 유리하게 나오면 저에게 이익이 될 수 있습니다. 그래서 다음을 지키겠습니다.</p>
-  <ul>
-    <li><b>좋아지지 않은 분과 오히려 나빠진 분의 기록도 똑같이 세어 발표합니다.</b> 유리한 사례만 골라 쓰지 않습니다</li>
-    <li>판정 기준을 분석하기 전에 미리 정해두고, 결과를 본 뒤에 바꾸지 않습니다</li>
-    <li>결과를 프로그램 안내에 인용할 때는 <b>좋아지지 않은 분의 수와 이 연구의 한계를 반드시 함께</b> 적습니다</li>
-    <li><b>위원회의 심의를 받았다는 사실 자체를 광고에 쓰지 않습니다</b></li>
-  </ul>
-
-  <h2>10. 문의하실 곳</h2>
-  <p>연구에 관한 문의 · <b><a href="http://pf.kakao.com/_xmnxfyn" target="_blank" style="color:var(--green)">허리디스크 회복연구소 카카오 채널</a></b><br>
-  연구대상자의 권리에 관한 문의 · 보건복지부 지정 공용기관생명윤리위원회</p>
 
   <!-- ── 동의 ── -->
   <div class="consent" id="consent">
-    <h2>동 의 서</h2>
-    <p style="font-size:15px;color:var(--mute);margin-bottom:6px">
-    위 설명문을 읽었으며, 궁금한 점을 물어볼 기회를 가졌습니다. 아래 항목에 각각 표시해 주십시오.</p>
-
-    <div class="ci">
-      <input type="checkbox" id="c1">
-      <label for="c1">프로그램 참여 중 기록한 <b>자료를 연구 목적으로 사용</b>하는 것에 동의합니다.
-      <span class="req">(필수)</span></label>
-    </div>
-    <div class="ci">
-      <input type="checkbox" id="c2">
-      <label for="c2"><b>건강 관련 정보</b>(통증 정도·진단명·증상)를 연구에 사용하는 것에 동의합니다.
-      <span class="req">(필수)</span></label>
-    </div>
-    <div class="ci">
-      <input type="checkbox" id="c3">
-      <label for="c3"><b>연구 결과를 학술지·학술대회에 발표</b>하는 것에 동의합니다.
-      <span class="req">(필수)</span></label>
-    </div>
-    <div class="ci">
-      <input type="checkbox" id="c4">
-      <label for="c4">개인정보가 <b>국외에 보관·이전</b>되는 것에 동의합니다.
-      <span class="req">(필수)</span></label>
-    </div>
+    <h3>아래 네 가지에 동의를 여쭙습니다</h3>
+    <p style="font-size:14px;color:var(--mute);margin-bottom:6px">이미 남기신 기록만 쓰고, 성함은 지웁니다. 동의하지 않으셔도 불이익은 없습니다.</p>
+    <ol class="items">
+      <li>1. 프로그램 참여 중 기록한 자료를 <b>연구 목적으로 사용</b>하는 것</li>
+      <li>2. <b>건강 관련 정보</b>(통증 정도, 진단명, 증상)를 연구에 사용하는 것</li>
+      <li>3. 연구 결과를 <b>학술지·학술대회에 발표</b>하는 것</li>
+      <li>4. 개인정보가 <b>국외에 보관·이전</b>되는 것 (기록 서버가 미국 회사입니다)</li>
+    </ol>
     <div class="ci">
       <input type="checkbox" id="c5">
-      <label for="c5">제가 적은 글의 일부를 <b>개인을 알 수 없게 처리하여 인용</b>하는 것에 동의합니다.
-      <span class="opt">(선택 · 안 하셔도 나머지 자료는 사용됩니다)</span></label>
+      <label for="c5">(선택) 제가 적은 글의 일부를 <b>개인을 알 수 없게 처리하여 인용</b>해도 됩니다.
+      안 하셔도 나머지 자료는 쓰입니다.</label>
     </div>
 
-    <div class="name">
+    <div class="who" id="who" style="display:none"></div>
+    <div class="name" id="nameBox">
       <label for="nm">성함</label>
       <input type="text" id="nm" placeholder="홍길동" autocomplete="off">
-      <div class="hint">어느 분 기록인지 찾기 위해서입니다. 닉네임이 아니라 성함으로 적어주시면 됩니다.</div>
+      <div class="hint">어느 분 기록인지 찾기 위해서입니다.</div>
     </div>
 
-    <button class="btn" id="go" disabled>동의합니다</button>
+    <button class="btn" id="go">네 가지 모두 동의합니다</button>
     <button class="no" id="nope">동의하지 않겠습니다</button>
   </div>
 
+  <details class="full">
+    <summary>설명문 전문 보기 (연구 참여 설명문 및 동의서 ver 5.0)</summary>
+    <div class="body">
+      <table>
+        <tr><th>연구과제명</th><td>허리디스크·좌골신경통 환자의 활동 강도와 증상 변화의 관련성<br>— 일일 관찰 기록 1,063건 기반 후향적 관찰연구</td></tr>
+        <tr><th>관리번호</th><td>2026-2823-003</td></tr>
+        <tr><th>연구책임자</th><td>이재강 (연락처 010-5049-1768)</td></tr>
+        <tr><th>버전</th><td>ver 5.0 (2026년 10월 26일)</td></tr>
+      </table>
+
+      <h2>안내 말씀</h2>
+      <p>회복 나침반 프로그램에 참여해 주신 분께, 프로그램을 하시는 동안 매일 남겨주신 기록을 연구에 사용해도 될지 여쭙기 위해 이 문서를 드립니다.</p>
+      <p>처음 프로그램을 시작하실 때는 연구 계획이 없었습니다. 그래서 기록이 연구에 쓰일 수 있다는 안내를 드리지 못하였습니다. 기록이 쌓인 뒤에야 연구를 계획하게 되었고, 정식 절차를 밟기 위하여 공용기관생명윤리위원회의 심의를 신청하였습니다.</p>
+      <p>동의하지 않으셔도 아무런 불이익이 없습니다. 이미 받으신 프로그램의 내용에는 어떠한 변화도 없으며, 앞으로 다시 참여하시더라도 차이가 없습니다.</p>
+
+      <h2>1. 연구의 목적</h2>
+      <p>허리디스크나 좌골신경통이 있는 분이 어느 정도로 움직이는 것이 회복 과정에서 어떤 반응과 이어지는지를 알아보는 연구입니다.</p>
+      <p>참여자께서 매일 남겨주신 기록에는 얼마나 걸었고, 얼마나 뛰었고, 그날 몸이 어땠는지가 날짜별로 들어 있습니다. 이 기록을 모아 보면 어떤 활동량에서 몸이 어떻게 반응하였는지를 살펴볼 수 있습니다.</p>
+
+      <h2>2. 연구대상자 및 연구 기간</h2>
+      <table>
+        <tr><th>연구대상자</th><td>회복 나침반 프로그램 참여자 중 2026년 3월 17일부터 8월 9일 사이에 기록을 남기신 분 26명 이내입니다. 동의 결과에 따라 실제 인원은 줄어들 수 있습니다.</td></tr>
+        <tr><th>연구 기간</th><td>위원회 승인일부터 2027년 8월 31일까지입니다.</td></tr>
+        <tr><th>하실 일</th><td>이 설명문을 읽고 동의 여부를 표시해 주시는 것 외에 별도로 하실 일은 없습니다. 새로 검사를 받으시거나 추가로 기록을 남기실 필요가 없습니다.</td></tr>
+      </table>
+
+      <h2>3. 사용하는 자료</h2>
+      <p>프로그램에 참여하시는 동안 직접 입력해 주신 기록만 사용합니다.</p>
+      <table>
+        <tr><th>사용하는 것</th><td>활동 종류(걷기·슬로우조깅·휴식)와 수행 시간 / 활동 전·중·직후·다음날 아침의 컨디션 / 통증 점수(0~10) / 활동 소감과 상세 기록에 적어주신 글 / 프로그램 시작 시 알려주신 연령대, 성별, 진단명, 증상 시작 시기, 직업 유형</td></tr>
+        <tr><th>사용하지 않는 것</th><td>성명, 연락처 (연구 자료에서 삭제합니다) / 자세 확인을 위하여 올려주신 동영상</td></tr>
+      </table>
+      <p><b>어떻게 재는지 — 2026년 10월 6일 심의의견에 따라 추가로 알려드립니다</b></p>
+      <table>
+        <tr><th>걸으신 시간·거리·속도</th><td><b>앱이 직접 잽니다.</b> 손으로 적으시는 값이 아니라 앱의 기록기가 측정한 값입니다. 이 연구에서 「얼마나 움직였는가」에 해당하는 숫자는 모두 여기서 나옵니다.</td></tr>
+        <tr><th>통증 점수 (0~10)</th><td>통증을 재는 방식 가운데 세계적으로 널리 쓰이는 것입니다. <b>매일</b> 여쭙기 때문에, 통증이 결국 줄었는지뿐 아니라 <b>언제부터 줄기 시작했는지</b>를 볼 수 있습니다.</td></tr>
+        <tr><th>한 달에 한 번 여쭙는 7가지<br><span style="font-weight:500;font-size:12.5px">앉기·걷기·서기·수면·들기·사회생활·이동</span></th><td>허리 통증 연구에서 오래 쓰여 온 평가표(Oswestry Disability Index)의 항목을 가져와 만든 것입니다. 원래는 10가지를 여쭙는데, <b>길면 답하시기 번거로워 한 달을 통째로 건너뛰시는 일이 생기므로</b> 7가지로 줄였습니다. 줄여 쓴 사실과 그로 인한 한계는 <b>연구 결과를 발표할 때 그대로 밝힙니다.</b></td></tr>
+        <tr><th>적어주신 글</th><td>좋아졌는지 나빠졌는지를 <b>판정하는 근거로는 쓰지 않습니다.</b> 숫자에서 보이는 변화를 이해하는 데 참고로만 봅니다.</td></tr>
+      </table>
+
+      <h2>4. 개인정보의 보호</h2>
+      <ul>
+        <li>성명과 연락처를 삭제하고 연구용 번호(예: P-01)로 바꿉니다.</li>
+        <li>생년월일은 연령대(40대, 50대 등)로만 표시합니다.</li>
+        <li>날짜는 실제 날짜 대신 참여 시작일로부터의 경과일수로 바꿉니다.</li>
+        <li>적어주신 글에 지명, 직장 이름, 가족 관계처럼 누구인지 짐작될 만한 내용이 있으면 지우거나 바꿉니다.</li>
+      </ul>
+      <p>성명과 연구용 번호를 연결한 대응표는 분석 자료와 분리된 곳에 암호로 보호하여 보관하며 연구책임자만 접근합니다. 이 대응표는 동의를 철회하실 경우 해당 자료를 찾아 제외하기 위하여 보관하는 것이며, 연구가 끝나면 즉시 파기합니다.</p>
+
+      <h2>5. 자료의 보관 및 파기</h2>
+      <p>연구 자료는 연구 종료 후 3년간 보관한 뒤 복구할 수 없는 방법으로 파기합니다. 전자 파일은 삭제하고, 출력물이 있는 경우 분쇄합니다. 대응표는 위 4항과 같이 연구 종료 즉시 파기합니다.</p>
+
+      <h2>6. 개인정보의 국외 이전</h2>
+      <p>기록이 저장된 서버를 국외 사업자가 운영하고 있습니다. 이는 「개인정보 보호법」상 개인정보의 국외 이전에 해당하므로 아래와 같이 알려드립니다.</p>
+      <table>
+        <tr><th>이전되는 항목</th><td>성명(닉네임), 연락처, 일일 기록</td></tr>
+        <tr><th>이전받는 자</th><td>Railway Corporation (일일 기록, 성명, 연락처)<br>Cloudinary Ltd. (자세 확인용 동영상)</td></tr>
+        <tr><th>이전받는 자의 연락처</th><td>Railway Corporation : privacy@railway.com<br>Cloudinary Ltd. : privacy@cloudinary.com</td></tr>
+        <tr><th>이전되는 국가</th><td>미국</td></tr>
+        <tr><th>이전 시기 및 방법</th><td>프로그램 이용 시점에 정보통신망을 통하여 전송·저장되며, 이후 보관 기간 동안 해당 서버에 저장되어 있습니다.</td></tr>
+        <tr><th>이용 목적</th><td>프로그램 운영 및 기록 보관</td></tr>
+        <tr><th>보유·이용 기간</th><td>연구 종료 후 3년</td></tr>
+      </table>
+      <p><b>거부하실 수 있습니다.</b></p>
+      <ul>
+        <li>거부 방법 — 이 화면에서 「동의하지 않겠습니다」를 누르시거나, 연구책임자(010-5049-1768)에게 알려주시면 됩니다.</li>
+        <li>거부의 효과 — 거부하시는 경우 해당 자료를 연구에 사용하지 않습니다. 다만 프로그램 이용에는 어떠한 제한도 없습니다.</li>
+      </ul>
+
+      <h2>7. 참여에 따른 이익과 위험</h2>
+      <p>참여하신다고 하여 직접 얻으시는 이익은 없으며, 사례금도 지급되지 않습니다. 다만 이 연구의 결과는 앞으로 같은 통증으로 어떻게 움직여야 할지 몰라 어려움을 겪는 분들에게 참고가 될 수 있습니다.</p>
+      <p>이미 기록된 자료를 살펴보는 연구이므로 몸에 가해지는 위험은 없습니다. 개인정보가 유출될 위험이 남으나 위 4항의 방법으로 이를 최소화합니다.</p>
+
+      <h2>8. 결과의 발표</h2>
+      <p>학술지 게재 또는 학술대회 발표를 계획하고 있습니다. 발표되는 내용에는 개인을 알아볼 수 있는 정보가 포함되지 않습니다.</p>
+      <p>적어주신 글의 일부를 인용할 수 있으며, 이때에도 누구인지 알 수 없도록 처리합니다. 인용을 원하지 않으시면 위 (선택) 칸에 표시하지 않으시면 됩니다.</p>
+
+      <h2>9. 동의의 철회</h2>
+      <p>언제든지 참여를 그만두실 수 있으며, <b>이유를 말씀하지 않으셔도 됩니다.</b> 방법은 두 가지이며 어느 쪽이든 같습니다.</p>
+      <table>
+        <tr><th>앱에서 직접</th><td>앱을 여시고 <b>아래쪽 「가이드북」 탭 → 「연구 참여 동의」의 스위치를 끄시면</b> 됩니다. 처음 동의하실 때와 같은 방식이며, 누구에게 말씀하지 않으셔도 그 자리에서 바로 처리됩니다.</td></tr>
+        <tr><th>연락으로</th><td>아래 연락처로 알려주셔도 됩니다.</td></tr>
+      </table>
+      <p>철회하시면 그동안 남겨주신 자료를 연구에서 제외하고 파기합니다. <b>프로그램 이용에는 아무런 변화가 없습니다.</b> 내용·기간·비용 어느 것도 달라지지 않습니다. 다만 이미 발표된 내용은 되돌릴 수 없습니다.</p>
+      <p>철회 문의 — 연구책임자 이재강 · 010-5049-1768</p>
+
+      <h2>10. 연구자의 이해상충</h2>
+      <p>연구책임자는 참여하셨던 유료 프로그램의 운영자입니다. 연구 결과가 프로그램에 유리하게 나올 경우 연구자에게 경제적 이익이 발생할 수 있습니다. 이를 방지하기 위하여 다음을 지킵니다.</p>
+      <ul>
+        <li>좋아지지 않은 분과 오히려 나빠진 분의 기록도 동일한 비중으로 세어 발표합니다. 유리한 사례만 골라 쓰지 않습니다.</li>
+        <li>개선·무변화·악화의 판정 기준을 분석 전에 문서로 고정하고, 결과를 본 뒤에 바꾸지 않습니다.</li>
+        <li>결과를 프로그램 안내에 인용할 때에는 개선되지 않은 사례의 수와 이 연구의 한계를 반드시 함께 표시합니다.</li>
+        <li>위원회의 심의·승인 사실 자체를 광고나 홍보에 사용하지 않습니다.</li>
+      </ul>
+
+      <h2>11. 연구의 성격과 한계</h2>
+      <p>본 연구는 대조군이 없는 단일군 후향적 관찰연구입니다. 따라서 활동과 회복 사이의 인과관계를 입증하지 않으며, 관찰된 연관성과 그 한계를 함께 보고합니다.</p>
+
+      <h2>12. 문의처</h2>
+      <table>
+        <tr><th>연구에 관한 문의</th><td>연구책임자 이재강 · 010-5049-1768</td></tr>
+        <tr><th>연구대상자의 권리에 관한 문의</th><td>보건복지부 지정 공용기관생명윤리위원회 · 02-737-8990</td></tr>
+      </table>
+    </div>
+  </details>
+
   <div class="foot">
-    설명문 및 동의서 버전 2.0 · 2026년 9월 7일<br>
-    이 동의는 전자적으로 기록되며, 동의하신 시각과 함께 보관됩니다.
+    연구 참여 설명문 및 동의서 〔기존 참여자용〕 ver 5.0 · 2026년 10월 26일 · 관리번호 2026-2823-003<br>
+    동의는 전자적으로 기록되며, 동의하신 시각과 함께 보관됩니다.
   </div>
 </div>
 
@@ -258,29 +236,42 @@
 
 <script>
 (function(){
-  var req=['c1','c2','c3','c4'], all=['c1','c2','c3','c4','c5'];
-  var nm=document.getElementById('nm'), go=document.getElementById('go');
-  function check(){
-    var ok=req.every(function(id){return document.getElementById(id).checked;});
-    go.disabled=!(ok && nm.value.trim().length>=2);
+  var nm=document.getElementById('nm');
+  // 링크에 ?n=성함 이 붙어 오면 성함 칸을 미리 채우고 접는다 — 버튼 한 번으로 끝
+  var pre=''; try{ pre=(new URLSearchParams(location.search).get('n')||'').trim(); }catch(e){}
+  if(pre){
+    nm.value=pre;
+    var who=document.getElementById('who');
+    who.innerHTML='';
+    who.appendChild(document.createTextNode(pre+' 님'));
+    var a=document.createElement('a'); a.href='#'; a.textContent='본인이 아니시면 고치기';
+    a.addEventListener('click',function(e){e.preventDefault();who.style.display='none';document.getElementById('nameBox').style.display='block';nm.focus();});
+    who.appendChild(a);
+    who.style.display='block';
+    document.getElementById('nameBox').style.display='none';
   }
-  all.forEach(function(id){document.getElementById(id).addEventListener('change',check);});
-  nm.addEventListener('input',check);
+
+  function needName(){
+    if(nm.value.trim().length>=2) return false;
+    document.getElementById('nameBox').style.display='block';
+    nm.focus(); alert('성함만 적어주시면 됩니다.'); return true;
+  }
 
   function send(agreed){
+    var c5=document.getElementById('c5').checked;
     var body={
       name: nm.value.trim(),
       agreed: agreed,
-      items: all.reduce(function(o,id){o[id]=document.getElementById(id).checked;return o;},{}),
-      version: '2.0',
+      items: {c1:agreed, c2:agreed, c3:agreed, c4:agreed, c5: agreed && c5},
+      version: '5.0',
       agreedAt: new Date().toISOString(),
       ua: navigator.userAgent
     };
     fetch('https://recovery-log-production.up.railway.app/api/research-consent',{
       method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
-    }).catch(function(){}).finally(function(){
+    }).then(function(r){
+      if(!r.ok) throw new Error(r.status);
       document.getElementById('form').style.display='none';
-      var j=document.getElementById('jump'); if(j) j.style.display='none';
       var d=document.getElementById('done'); d.style.display='block';
       if(!agreed){
         d.querySelector('.ic').textContent='○';
@@ -288,20 +279,19 @@
         document.getElementById('dp').innerHTML='기록을 연구에 사용하지 않겠습니다.<br>프로그램에는 어떤 변화도 없습니다.';
       }
       window.scrollTo(0,0);
+    }).catch(function(){
+      // 저장이 안 됐으면 「저장됐다」고 하지 않는다 — 다시 누를 수 있게 둔다
+      sent=false;
+      alert('인터넷 연결이 잠시 불안정해 저장되지 않았습니다. 버튼을 한 번 더 눌러 주세요.');
     });
   }
-  // 동의 칸이 화면에 보이면 아래 고정 버튼을 숨긴다
-  var jump=document.getElementById('jump'), box=document.getElementById('consent');
-  if(window.IntersectionObserver && jump && box){
-    new IntersectionObserver(function(es){
-      jump.style.display = es[0].isIntersecting ? 'none' : 'block';
-    },{threshold:0.08}).observe(box);
-  }
 
-  go.addEventListener('click',function(){send(true);});
+  var sent=false;
+  document.getElementById('go').addEventListener('click',function(){
+    if(sent||needName()) return; sent=true; send(true);
+  });
   document.getElementById('nope').addEventListener('click',function(){
-    if(!nm.value.trim()){ nm.focus(); alert('성함만 적어주시면 됩니다.'); return; }
-    send(false);
+    if(sent||needName()) return; sent=true; send(false);
   });
 })();
 </script>
